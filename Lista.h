@@ -26,7 +26,7 @@ int recurperar_utlimo(){
 if(Lista == 0){
   printf("lista vacia\n");
 }else {
-  cout << lista[index-1];
+  printf("%d", lista[index-1]);
   }
 }
 
