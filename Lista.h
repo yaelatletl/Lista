@@ -13,9 +13,9 @@ public:
 int recurperar_primero(){
 
 if(Lista == 0){
-  cout << "lista vacia";
+  printf("lista vacia\n");
 }else {
-  cout << lista[0];
+   printf("%d\n",lista[0]);
  }
 }
 
@@ -34,7 +34,6 @@ int recurperar_sucesor(){
 
 if(Lista == 0){
   printf("lista vacia\n");
-  return -1;
 }else {
   scanf("%d",x);
   if (x+1 > index) {
@@ -46,11 +45,11 @@ if(Lista == 0){
 int recurperar_predecesor(){
 
 if(Lista == 0){
-  cout << "lista vacia";
+  printf("lista vacia\n");
 }else {
-  cin >> x;
+  scanf("%d",x);
   if (0 > x > index) {
-   cout << lista[x-1];
+   printf("%d\n", lista[x-1]);
   }
 }
 
