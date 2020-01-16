@@ -4,10 +4,9 @@
 class Lista{
 protected:
 
-int Max=50;
+int Max=50,x,i,index;
 int lista[Max];
-int x;
-int index;
+
 
 public:
 //recuperar primero
@@ -66,5 +65,13 @@ if(Lista == 0){
   printf("%d\n", lista[x]);
   }
 }
-
+//Mostrar lista
+int recuperar_elemento(){
+ 
+  if(Lista == 0){
+  printf("lista vacia\n");
+  }else{ 
+  for(i=0;i>index;i++)
+    printf(lista[i])
+  }  
 }
