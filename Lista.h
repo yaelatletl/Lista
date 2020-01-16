@@ -1,6 +1,7 @@
 /* Lista.h*/
 #include <math.h>
-
+int Max=50;
+int lista[Max];
 int x
 
 //recuperar sucesor
