@@ -34,11 +34,12 @@ if(Lista == 0){
 int recurperar_sucesor(){
 
 if(Lista == 0){
-  cout << "lista vacia";
+  printf("lista vacia\n");
+  return -1;
 }else {
-  cin >> x;
+  scanf("%d",x);
   if (x+1 > index) {
-   cout << lista[x+1];
+   printf("%d\n", lista[x+1]);
   }
 }
 
@@ -58,13 +59,12 @@ if(Lista == 0){
 int recuperar_elemento(){
 
 if(Lista == 0){
-  cout << "lista vacia";
+  printf("lista vacia\n");
   }else{
- cin >> x;
+ scanf("%d", x);
  if (x > index) {
-  cout << lista[x];
+  printf("%d\n", lista[x]);
   }
 }
 
 }
-
