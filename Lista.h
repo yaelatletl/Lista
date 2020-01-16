@@ -1,5 +1,5 @@
 /* Lista.h*/
-#include <math.h>
+#include <stdio.h>
 int Max=50;
 int lista[Max];
 int x
@@ -13,4 +13,4 @@ if (x+1 > index) {
 cin >> x;
 if (x > index) {
   cout << lista[x];
-} 
+}
