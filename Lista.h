@@ -22,6 +22,18 @@ if(Lista == 0){
   }
 }
 
+//recuperar predecesor  
+int recurperar_predecesor(){
+
+if(Lista == 0){
+  cout << "lista vacia";
+}else {
+  cin >> x;
+  if (0 > x > index) {
+   cout << lista[x-1];
+  }
+}
+  
 //recuperar un elemento
 int recuperar_elemento(){
 
