@@ -8,7 +8,7 @@ int x
 cin >> x;
 if (x+1 > index) {
   cout << lista[x+1];
-  
+}
 //recuperar un elemento
 cin >> x;
 if (x > index) {
