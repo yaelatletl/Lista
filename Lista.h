@@ -6,7 +6,7 @@ class Lista{
 protected:
 
 int lista[MAX];
-int index;
+int index = 0;
 
 
 public:
@@ -36,8 +36,8 @@ int recurperar_sucesor(int x){
 if(estado_lista() == 0){
   printf("lista vacia\n");
 }else {
-  if (x+1 > index) {
-   printf("%d\n", lista[x+1]);
+  if (x+1 < index) {
+   return lista[x+1]);
   }
 }
 
@@ -46,8 +46,8 @@ int recurperar_predecesor(int x){
 
 if(estado_lista() == 0) printf("lista vacia\n");
 else {
-  if ( x > 0 && ! x > index) {
-   printf("%d\n", lista[x-1]);
+  if ( x > 0 &&  x < index) {
+   return lista[x-1];
   }
 }
 
@@ -62,9 +62,20 @@ if(Lista == 0){
   }
 }
 
-void mostrar_lista(){
+//Insertar
 
-  if(Lista == 0){
+
+//Suprimir
+
+
+//Eliminar duplicados
+
+
+
+
+void mostrar_elementos(){
+
+  if(estado_lista() == 0){
   printf("lista vacia\n");
   }else{
   for(int i=0; i<index;i++)
@@ -108,12 +119,9 @@ public int recuperrarElemento(int array[],int posicion, int indice){
 }
 */
 int estado_lista(){
-       if(index==0){
-           return 0; //significa lista vacia
-       }else if(index==50){
-           return -1; //significa lista llena
-       } else
-           return 1; //puede cocuparse la lista
+       if(index==0) return 0; //significa lista vacia
+       else if(index==50) return -1; //significa lista llena
+       else return 1; //puede cocuparse la lista
    }
 
 }
