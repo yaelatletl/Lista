@@ -10,9 +10,9 @@ int x;
 int index;
 
 public:
-  
+//recuperar sucesor  
 int recurperar_sucesor(){
-//recuperar sucesor
+
 if(Lista == 0){
   cout << "lista vacia";
 }else {
@@ -21,9 +21,10 @@ if(Lista == 0){
    cout << lista[x+1];
   }
 }
-  
-int recuperar_elemento(){
+
 //recuperar un elemento
+int recuperar_elemento(){
+
 if(Lista == 0){
   cout << "lista vacia";
   }else{
