@@ -66,7 +66,7 @@ if(Lista == 0){
   }
 }
 //Mostrar lista
-int recuperar_elemento(){
+intMostrar_lista(){
  
   if(Lista == 0){
   printf("lista vacia\n");
