@@ -20,17 +20,17 @@ if(Lista == 0){
  }
 }
 
-//recuperar ultimo  
+//recuperar ultimo
 int recurperar_utlimo(){
 
 if(Lista == 0){
-  cout << "lista vacia";
+  printf("lista vacia\n");
 }else {
   cout << lista[index-1];
   }
 }
-  
-//recuperar sucesor  
+
+//recuperar sucesor
 int recurperar_sucesor(){
 
 if(Lista == 0){
@@ -43,7 +43,7 @@ if(Lista == 0){
   }
 }
 
-//recuperar predecesor  
+//recuperar predecesor
 int recurperar_predecesor(){
 
 if(Lista == 0){
@@ -54,7 +54,7 @@ if(Lista == 0){
    cout << lista[x-1];
   }
 }
-  
+
 //recuperar un elemento
 int recuperar_elemento(){
 
