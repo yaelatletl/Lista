@@ -10,6 +10,26 @@ int x;
 int index;
 
 public:
+//recuperar primero
+int recurperar_primero(){
+
+if(Lista == 0){
+  cout << "lista vacia";
+}else {
+  cout << lista[0];
+ }
+}
+
+//recuperar ultimo  
+int recurperar_utlimo(){
+
+if(Lista == 0){
+  cout << "lista vacia";
+}else {
+  cout << lista[index-1];
+  }
+}
+  
 //recuperar sucesor  
 int recurperar_sucesor(){
 
