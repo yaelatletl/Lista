@@ -61,6 +61,17 @@ if(Lista == 0){
   printf("%d\n", lista[x]);
   }
 }
+
+void mostrar_lista(){
+
+  if(Lista == 0){
+  printf("lista vacia\n");
+  }else{
+  for(i=0;i>index;i++)
+    printf("%d\n", lista[i])
+  }
+}
+
 /*
 public int recuperarSecesor(int array[],int posicion,int indice){
    if(posicion<indice){
@@ -83,15 +94,6 @@ public int recuperrarElemento(int array[],int posicion, int indice){
     System.out.println("no existe el elemento digitado");
     return -1;
 //Mostrar lista
-int Mostrar_lista(){
- 
-  if(Lista == 0){
-  printf("lista vacia\n");
-  }else{ 
-  for(i=0;i>index;i++)
-    printf(lista[i])
-  }  
-}
 
    public int recuperarPredesecesor(int array[],int posicion,int indice){
    if(posicion<indice){
