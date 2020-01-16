@@ -64,12 +64,95 @@ if(Lista == 0){
 
 //Insertar
 
+void insertar_inicio(int x){
+	int aux=0;
+	if(estado_lista()==0){
+		lista[0]=x;
+		return;
+	}
+	if(estado_lista()==-1){
+		printf("Lista llena\n");
+		return;
+	}
+	else{
+		aux = index-1;
+		while(aux>=0){
+			lista[aux+1]=lista[aux];
+			aux--;
+		}
+		lista[aux+1] = x;
+		indice++;
+		return;
+	}
+}
+
+void insertar_final(int x){
+	if (estado_lista()==-1){
+		printf("Lista llena\n")
+		return;
+	}
+	else{
+		lista[index]=x;
+		index++;
+		return;
+	}
+}
+
 
 //Suprimir
 
 
+int suprimir_primero(){
+	int temp = -1;
+	if(estado_lista==0){
+		printf("Lista vacia\n");
+		
+	}
+	else{
+		temp = lista[0];
+		for (int i=1; i<index; i++){
+			lista[i-1]=lista[i];
+		}
+		index--;
+		
+	}
+	return temp;
+}
+
+int suprimir_ultimo(){
+	int temp = -1;
+	if(estado_lista()==0){
+		printf("lista vacia\n");
+		
+	}
+	else {
+		temp=lista[index-1];
+		index--;
+		
+	}
+	return temp;
+}
+
 //Eliminar duplicados
 
+void eliminar_duplicados(){
+	if (estado_lista== 0){
+		printf("Lista Vacia\n");
+		return;
+	}
+	else{
+		for (int i =0; i<index; i++){
+			for(int j = i+1; j<index; j++){
+				if (lista[i]==lista[j]){
+					for(int k = j+1; k< index; k++){
+						indice--;
+						j--;
+					}
+				}
+			}
+		}
+	}
+}
 
 
 
