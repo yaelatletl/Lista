@@ -67,7 +67,7 @@ void mostrar_lista(){
   if(Lista == 0){
   printf("lista vacia\n");
   }else{
-  for(i=0;i>index;i++)
+  for(int i=0; i<index;i++)
     printf("%d\n", lista[i])
   }
 }
