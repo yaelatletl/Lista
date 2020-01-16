@@ -4,7 +4,7 @@
 class Lista{
 protected:
 
-int Max=50,x,i,index;
+int Max=50,x,i,index=0;
 int lista[Max];
 
 
