@@ -192,12 +192,6 @@ void mostrar_elementos(){
     printf("%d\n", lista[i]);
   }
 }
-
-
-
-
-
-
 };
 
 class Pila: public Lista{
@@ -211,7 +205,17 @@ public:
   int ultimo(){
     return recuperar_ultimo();
   }
+  void estado(){
+      if(estado_lista()==0){
+          printf("La Pila esta vacia \n");
+      }else if(estado_lista()==-1){
+              printf("La Pila esta llena \n");
+      }else {
+          printf("La Pila esta disponible \n");
+      }
+  }
 };
+
 
 
 class Cola: public Lista{
@@ -225,5 +229,14 @@ public:
   }
   int recuperar(int x){
     return recuperar_pos_elemento(x);
+  }
+  void estado(){
+      if(estado_lista()==0){
+          printf("La Cola esta vacia \n");
+      }else if(estado_lista()==-1){
+              printf("La Cola esta llena \n");
+      }else {
+          printf("La cola esta disponible \n");
+      }
   }
 };

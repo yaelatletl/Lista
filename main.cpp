@@ -10,11 +10,11 @@ Lista lista;
 Cola cola;
 Pila pila;
 do {
-	printf("Ingrese donde quiere realizar operaciones \n1.- Lista\n2.- Cola\n3.- Pila");
+	printf("Ingrese donde quiere realizar operaciones \n1.- Lista\n2.- Cola\n3.- Pila\n");
 	scanf("%d", &opc);
 	switch (opc) {
 		case 1:{
-			printf("Ingrese la accion a realizar sobre la lista:\n 1)Insercion al inicio\n 2)insercion al final\n 3)suprimir al inicio\n 4)suprimir al final\n 5)eliminar repetidos\n 6)encotrar x\n 7)recuperar primero\n 8)recuperar ultimo\n 9)recuperar sucesor\n 10) recuperar predecesor\n 11)Mostrar lista\n 12)salir  \n");
+			printf("Ingrese la accion a realizar sobre la lista:\n1) Insercion al inicio\n2) Insercion al final\n3) Suprimir al inicio\n4) Suprimir al final\n5) Eliminar repetidos\n6) Encotrar x\n7) Recuperar primero\n8) Recuperar ultimo\n9) Recuperar sucesor\n10) Recuperar predecesor\n11) Mostrar lista\n12) Salir  \n");
 			scanf("%d", &opc);
 			switch(opc) {
 
@@ -72,14 +72,21 @@ do {
 	case 9: {
 		printf("Dame un numero a buscar\n");
 		scanf("%d", &x);
-		printf("El sucesor del numero %d es %d \n", x, lista.recuperar_sucesor(x));
+		y = lista.recuperar_sucesor(x);
+		if (y==-1) printf("No es posible recuperar el sucesor");
+		else printf("El sucesor del numero %d es %d \n", x, y);
+			
+		
+		
 		getchar();
 		break;
 	}
 	case 10: {
 		printf("Dame un numero a buscar\n");
 		scanf("%d", &x);
-		printf("El predecesor del numero %d es %d \n", x, lista.recuperar_predecesor(x));
+		y = lista.recuperar_predecesor(x);
+		if (y==-1) printf("No es posible recuperar predecesor");
+		else printf("El predecesor del numero %d es %d \n", x, y);
 		getchar();
 		break;
 	}
@@ -97,46 +104,54 @@ do {
 			break;
 		}
 		case 2:{
-		printf("Ingrese la accion a realizar sobre la lista:\n 1)encolar 2)desencolar 3)buscar  \n");
+		printf("Ingrese la accion a realizar sobre la cola:\n 1) Encolar\n 2) Desencolar\n 3) Buscar\n 4) Estado \n");
 		scanf("%d", &opc);
 		switch (opc) {
 		case 1:{
 			printf("Dame el numero a ingresar\n");
-			scanf("%d", &y);
-			cola.encolar(y);
+			scanf("%d", &x);
+			cola.encolar(x);
 			getchar();
 			break;
 		}
 		case 2:{
-			printf("El numero que se desencoló es %d\n", cola.desencolar());
+			y = cola.desencolar();
+			if (y==-1) printf("No es posible deseconlar\n");
+			else printf("El numero que se desencolo es %d\n", y);
 			break;
 		}
 
 		case 3:{
 			printf("Dame el numero a buscar\n");
-			scanf("%d", &y);
-			y = cola.recuperar(y);
+			scanf("%d", &x);
+			y = cola.recuperar(x);
 			if(y == -1) printf("Numero no encontrado\n");
-			else	printf("La posicion del numero %d es\n", y);
+			else	printf("La posicion del numero %d es %d\n",x, y);
 			getchar();
+			break;
+		}
+		case 4:{
+			cola.estado();
 			break;
 		}
 
 	}
 		break;}
 		case 3:{
-		printf("Ingrese la accion a realizar sobre la lista:\n 1)ingresar al final 2)sacar al final 3)recurperar tope \n");
+		printf("Ingrese la accion a realizar sobre la cola:\n1) Ingresar al final\n2) Sacar al final \n3) Recurperar tope \n4) Estado \n");
 		scanf("%d", &opc);
 		switch (opc) {
 		case 1:{
 			printf("Dame el numero a ingresar\n");
-			scanf("%d", &y);
-			pila.push(y);
+			scanf("%d", &x);
+			pila.push(x);
 			getchar();
 		break;
 		}
 		case 2:{
-			printf("Se popeó %d\n", pila.pop());
+			y = pila.pop();
+			if (y==-1) printf("No es posible popear\n");
+			else printf("Se popeo %d\n", y);
 			break;
 		}
 		case 3:{
@@ -144,6 +159,10 @@ do {
 			printf("El tope de pila es %d \n", pila.ultimo());
 			break;
 
+		}
+		case 4:{
+			pila.estado();
+			break;
 		}
 
 	}
