@@ -6,7 +6,7 @@
 void Listas(Lista lista, int opc){
 	int y;
 	switch(opc) {
-	
+
 	case 1: {
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
@@ -15,7 +15,7 @@ void Listas(Lista lista, int opc){
 		getchar();
 		break;
 	}
-       
+
 	case 2:{
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
@@ -126,6 +126,12 @@ void Pilas(Pila pila, int x){
 		case 2:{
 			printf("Se popeó %d\n", pila.pop());
 		}
+		case 3:{
+
+			printf("El tope de pila es %d \n" pila.ultimo());
+
+		}
+
 	}
 }
 
@@ -145,12 +151,12 @@ do {
 			break;
 		}
 		case 2:{
-		printf("Ingrese la accion a realizar sobre la lista:\n 1)encolar 2)desencolar  \n");
+		printf("Ingrese la accion a realizar sobre la lista:\n 1)encolar 2)desencolar 3)buscar  \n");
 		scanf("%d", &opc);
 		Colas(cola, opc);
 		break;}
 		case 3:{
-		printf("Ingrese la accion a realizar sobre la lista:\n 1)ingresar al final 2)sacar al final  \n");
+		printf("Ingrese la accion a realizar sobre la lista:\n 1)ingresar al final 2)sacar al final 3)recurperar tope \n");
 		scanf("%d", &opc);
 		Pilas(pila, opc);
 		break;}

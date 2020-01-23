@@ -68,11 +68,11 @@ if(estado_lista() == 0){
   printf("lista vacia\n");
   return -1;
   }else{
- if (x > index && x <= MAX) {
+
    for (int i = 0; i < index; i++) {
     if (x==lista[i]) return i;
    }
-  }
+   return -1;
 }
 }
 //recuperar un elemento
@@ -82,7 +82,7 @@ if(estado_lista() == 0){
   printf("lista vacia\n");
   }else{
  if (x > index && x <= MAX) {
-  printf("%d\n", lista[x]);
+  return lista[x];
   }
 }
 }
