@@ -1,5 +1,8 @@
 /* Lista.h
-Yael Angel*/
+Roberto Aguirre Coyotzi
+Yael Atletl Bueno Rojas
+Angel Sanchez Cabrera
+Leonardo Emmanuel Perez Ocampo*/
 #include <stdio.h>
 
 #define MAX 50
@@ -24,7 +27,8 @@ int estado_lista(){
 int recuperar_primero(){
 
 if(estado_lista() == 0){
-  printf("lista vacia\n");;
+  printf("Lista vacia\n");
+  return -1;
 }else {
   return lista[0];
  }
@@ -34,7 +38,8 @@ if(estado_lista() == 0){
 int recuperar_ultimo(){
 
 if(estado_lista() == 0){
-  printf("lista vacia\n");
+  printf("Lista vacia\n");
+  return -1;
 }else {
   return lista[index-1];
   }
@@ -42,7 +47,7 @@ if(estado_lista() == 0){
 
 int recuperar_sucesor(int x){
    for(int i=0;i<index;i++){
-    if((i==x)&&(lista[(i+1)]!=0)){
+    if((lista[i]==x)&&(lista[(i+1)]!=0)){
         return lista[(i+1)];
     }
     }
@@ -171,10 +176,11 @@ void eliminar_duplicados(){
 		for (int i =0; i<index; i++){
 			for(int j = i+1; j<index; j++){
 				if (lista[i]==lista[j]){
-					for(int k = j+1; k< index; k++){
+					//for(int k = j+1; k< index; k++){
 						index--;
-						j--;
-					}
+					eliminar_duplicados();
+					//	j--;
+					//}
 				}
 			}
 		}
@@ -187,10 +193,11 @@ void mostrar_elementos(){
 
   if(estado_lista() == 0){
   printf("lista vacia\n");
-  }else{
-  for(int i=0; i<index-1;i++)
-    printf("%d\n", lista[i]);
+  return;
   }
+  for(int i=0; i<index;i++)
+    printf("%d\n", lista[i]);
+
 }
 };
 

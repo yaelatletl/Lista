@@ -1,3 +1,8 @@
+//Roberto Aguirre Coyotzi
+//Yael Atletl Bueno Rojas
+//Angel Sanchez Cabrera
+//Leonardo Emmanuel Perez Ocampo
+
 #include <stdio.h>
 #include "Lista.h"
 
@@ -62,11 +67,15 @@ do {
 		break;
 	}
 	case 7: {
-		printf("El elemento de la posicion inicial es %d \n", lista.recuperar_primero() );
+		y = lista.recuperar_primero();
+		if (y==-1) printf("No es posible recuperar primero\n");
+		else printf("El elemento de la posicion inicial es %d \n", y );
 		break;
 	}
 	case 8: {
-		printf("El elemento de la posicion final es %d \n", lista.recuperar_ultimo() );
+		y = lista.recuperar_ultimo();
+		if (y==-1) printf("No es posible recuperar ultimo\n");
+		else printf("El elemento de la posicion final es %d \n", y );
 		break;
 	}
 	case 9: {
@@ -85,7 +94,7 @@ do {
 		printf("Dame un numero a buscar\n");
 		scanf("%d", &x);
 		y = lista.recuperar_predecesor(x);
-		if (y==-1) printf("No es posible recuperar predecesor");
+		if (y==-1) printf("No es posible recuperar predecesor\n");
 		else printf("El predecesor del numero %d es %d \n", x, y);
 		getchar();
 		break;
