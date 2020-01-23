@@ -1,7 +1,6 @@
-##include "Lista.h"
+#include "Lista.h"
 
-class Cola:
-public Lisa{
+class Cola: public Lista{
 public:
   void encolar(int x){
     insertar_final(x);
@@ -13,4 +12,4 @@ public:
   int recuperar(int x){
     return recuperar_pos_elemento(x);
   }
-}
+};

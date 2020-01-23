@@ -41,9 +41,9 @@ if(estado_lista() == 0){
 }
 
 int recuperar_sucesor(int x){
-   for(int i=0;i<indice;i++){
-    if((i==x)&&(array[(i+1)]!=0)){
-        return array[(i+1)];
+   for(int i=0;i<index;i++){
+    if((i==x)&&(lista[(i+1)]!=0)){
+        return lista[(i+1)];
     }
     }
     printf("no hay sucesor");
@@ -198,4 +198,32 @@ void mostrar_elementos(){
 
 
 
+};
+
+class Pila: public Lista{
+public:
+  void push(int x){
+    insertar_final(x);
+  }
+  int pop(){
+    return suprimir_ultimo();
+  }
+  int ultimo(){
+    return recuperar_ultimo();
+  }
+};
+
+
+class Cola: public Lista{
+public:
+  void encolar(int x){
+    insertar_final(x);
+  }
+
+  int desencolar(){
+    return suprimir_primero();
+  }
+  int recuperar(int x){
+    return recuperar_pos_elemento(x);
+  }
 };
