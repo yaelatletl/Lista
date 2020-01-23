@@ -18,7 +18,7 @@ int estado_lista(){
        else if(index==50) return -1; //significa lista llena
        else return 1; //puede cocuparse la lista
    }
-   
+
 //recuperar primero
 
 int recuperar_primero(){
@@ -26,7 +26,7 @@ int recuperar_primero(){
 if(estado_lista() == 0){
   printf("lista vacia\n");;
 }else {
-  printf("%d\n",lista[0]);
+  return lista[0];
  }
 }
 
@@ -40,21 +40,18 @@ if(estado_lista() == 0){
   }
 }
 
-//recuperar sucesor
 int recuperar_sucesor(int x){
-
-if(estado_lista() == 0){
-  printf("lista vacia\n");
-}else {
-  if (x+1 < index) {
-   return lista[x+1];
-  }
-}
+   for(int i=0;i<indice;i++){
+    if((i==x)&&(array[(i+1)]!=0)){
+        return array[(i+1)];
+    }
+    }
+    printf("no hay sucesor");
+    return -1;
 }
 
 //recuperar predecesor
 int recuperar_predecesor(int x){
-
 if(estado_lista() == 0) printf("lista vacia\n");
 else {
 	for(int i=0; i<index-1; i++)
@@ -62,10 +59,21 @@ else {
   	if(i=!0) return lista[i-1];
   	else printf("No hay antecesor para este numero\n");
   }
-  
 }
 }
 
+int recuperar_pos_elemento(int x){
+
+if(estado_lista() == 0){
+  printf("lista vacia\n");
+  }else{
+ if (x > index && x <= MAX) {
+   for (int i = 0; i < index; i++) {
+    if (x==lista[i]) return i;
+   }
+  }
+}
+}
 //recuperar un elemento
 int recuperar_elemento(int x){
 
@@ -124,7 +132,7 @@ int suprimir_primero(){
 	int temp = -1;
 	if(estado_lista()==0){
 		printf("Lista vacia\n");
-		
+
 	}
 	else{
 		temp = lista[0];
@@ -132,7 +140,7 @@ int suprimir_primero(){
 			lista[i-1]=lista[i];
 		}
 		index--;
-		
+
 	}
 	return temp;
 }
@@ -141,12 +149,12 @@ int suprimir_ultimo(){
 	int temp = -1;
 	if(estado_lista()==0){
 		printf("lista vacia\n");
-		
+
 	}
 	else {
 		temp=lista[index-1];
 		index--;
-		
+
 	}
 	return temp;
 }
@@ -185,34 +193,8 @@ void mostrar_elementos(){
 }
 
 
-public int recuperar_sucesor(int x){
-   if(posicion<indice){
-   for(int i=0;i<indice;i++){
-    if((i==posicion)&&(array[(posicion+1)]!=0)){
-        return array[(posicion+1)];
-    }
-    }
-   }
-    printf("no hay sucesor");
-    return -1;
-}
 
-
-   public int recuperar_predesecesor(int x){
-   if(posicion<index){
-   for(int i=0;i<index;i++){
-    if((lista[i]==x)&&(lista[(i-1)]!=0)){
-        return lista[(i-1)];
-    }
-    }
-   }
-    printf("no hay predecesor");
-    return -1;
-}
 
 
 
 };
-
-
-
