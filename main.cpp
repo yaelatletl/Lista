@@ -147,7 +147,7 @@ do {
 	}
 		break;}
 		case 3:{
-		printf("Ingrese la accion a realizar sobre la cola:\n1) Ingresar al final\n2) Sacar al final \n3) Recurperar tope \n4) Estado \n");
+		printf("Ingrese la accion a realizar sobre la pila:\n1) Ingresar al final\n2) Sacar al final \n3) Recurperar tope \n4) Estado \n");
 		scanf("%d", &opc);
 		switch (opc) {
 		case 1:{
