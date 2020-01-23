@@ -1,7 +1,10 @@
-/* Lista.h*/
+/* Lista.h
+Yael Angel*/
 #include <stdio.h>
 
 #define MAX 50
+
+
 class Lista{
 protected:
 
@@ -10,8 +13,15 @@ int index = 0;
 
 
 public:
+int estado_lista(){
+       if(index==0) return 0; //significa lista vacia
+       else if(index==50) return -1; //significa lista llena
+       else return 1; //puede cocuparse la lista
+   }
+   
 //recuperar primero
-int recurperar_primero(){
+
+int recuperar_primero(){
 
 if(estado_lista() == 0){
   printf("lista vacia\n");;
@@ -21,45 +31,51 @@ if(estado_lista() == 0){
 }
 
 //recuperar ultimo
-int recurperar_utlimo(){
+int recuperar_ultimo(){
 
 if(estado_lista() == 0){
   printf("lista vacia\n");
 }else {
-  printf("%d", lista[index-1]);
+  return lista[index-1];
   }
 }
 
 //recuperar sucesor
-int recurperar_sucesor(int x){
+int recuperar_sucesor(int x){
 
 if(estado_lista() == 0){
   printf("lista vacia\n");
 }else {
   if (x+1 < index) {
-   return lista[x+1]);
+   return lista[x+1];
   }
+}
 }
 
 //recuperar predecesor
-int recurperar_predecesor(int x){
+int recuperar_predecesor(int x){
 
 if(estado_lista() == 0) printf("lista vacia\n");
 else {
-  if ( x > 0 &&  x < index) {
-   return lista[x-1];
+	for(int i=0; i<index-1; i++)
+  if ( x == lista[i]) {
+  	if(i=!0) return lista[i-1];
+  	else printf("No hay antecesor para este numero\n");
   }
+  
+}
 }
 
 //recuperar un elemento
 int recuperar_elemento(int x){
 
-if(Lista == 0){
+if(estado_lista() == 0){
   printf("lista vacia\n");
   }else{
  if (x > index && x <= MAX) {
   printf("%d\n", lista[x]);
   }
+}
 }
 
 //Insertar
@@ -68,6 +84,7 @@ void insertar_inicio(int x){
 	int aux=0;
 	if(estado_lista()==0){
 		lista[0]=x;
+		index++;
 		return;
 	}
 	if(estado_lista()==-1){
@@ -81,14 +98,15 @@ void insertar_inicio(int x){
 			aux--;
 		}
 		lista[aux+1] = x;
-		indice++;
+		index++;
 		return;
 	}
 }
 
 void insertar_final(int x){
 	if (estado_lista()==-1){
-		printf("Lista llena\n")
+		printf("Lista llena\n");
+		index++;
 		return;
 	}
 	else{
@@ -104,7 +122,7 @@ void insertar_final(int x){
 
 int suprimir_primero(){
 	int temp = -1;
-	if(estado_lista==0){
+	if(estado_lista()==0){
 		printf("Lista vacia\n");
 		
 	}
@@ -136,7 +154,7 @@ int suprimir_ultimo(){
 //Eliminar duplicados
 
 void eliminar_duplicados(){
-	if (estado_lista== 0){
+	if (estado_lista()== 0){
 		printf("Lista Vacia\n");
 		return;
 	}
@@ -145,7 +163,7 @@ void eliminar_duplicados(){
 			for(int j = i+1; j<index; j++){
 				if (lista[i]==lista[j]){
 					for(int k = j+1; k< index; k++){
-						indice--;
+						index--;
 						j--;
 					}
 				}
@@ -161,13 +179,13 @@ void mostrar_elementos(){
   if(estado_lista() == 0){
   printf("lista vacia\n");
   }else{
-  for(int i=0; i<index;i++)
-    printf("%d\n", lista[i])
+  for(int i=0; i<index-1;i++)
+    printf("%d\n", lista[i]);
   }
 }
 
-/*
-public int recuperarSecesor(int array[],int posicion,int indice){
+
+public int recuperar_sucesor(int x){
    if(posicion<indice){
    for(int i=0;i<indice;i++){
     if((i==posicion)&&(array[(posicion+1)]!=0)){
@@ -175,38 +193,26 @@ public int recuperarSecesor(int array[],int posicion,int indice){
     }
     }
    }
-    System.out.println("no hay sucesor");
+    printf("no hay sucesor");
     return -1;
 }
 
-public int recuperrarElemento(int array[],int posicion, int indice){
-    for(int i=0;i<indice;i++){
-        if(i==posicion){
-            return array[i];
-        }
-    }
-    System.out.println("no existe el elemento digitado");
-    return -1;
-//Mostrar lista
 
-   public int recuperarPredesecesor(int array[],int posicion,int indice){
-   if(posicion<indice){
-   for(int i=0;i<indice;i++){
-    if((i==posicion)&&(array[(posicion-1)]!=0)){
-        return array[(posicion-1)];
+   public int recuperar_predesecesor(int x){
+   if(posicion<index){
+   for(int i=0;i<index;i++){
+    if((lista[i]==x)&&(lista[(i-1)]!=0)){
+        return lista[(i-1)];
     }
     }
    }
-    System.out.println("no hay predecesor");
+    printf("no hay predecesor");
     return -1;
 }
-*/
-int estado_lista(){
-       if(index==0) return 0; //significa lista vacia
-       else if(index==50) return -1; //significa lista llena
-       else return 1; //puede cocuparse la lista
-   }
 
-}
 
-}
+
+};
+
+
+
