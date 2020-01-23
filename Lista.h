@@ -66,6 +66,7 @@ int recuperar_pos_elemento(int x){
 
 if(estado_lista() == 0){
   printf("lista vacia\n");
+  return -1;
   }else{
  if (x > index && x <= MAX) {
    for (int i = 0; i < index; i++) {

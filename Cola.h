@@ -10,4 +10,10 @@ public:
   int desencolar(){
     return suprimir_primero();
   }
+  int recuperar(int x){
+    return recuperar_pos_elemento(x);
+  }
+  int primero(){
+    return recuperar_primero();
+  }
 }
