@@ -6,6 +6,7 @@
 void Listas(Lista lista, int opc){
 	int y;
 	switch(opc) {
+	
 	case 1: {
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
@@ -14,7 +15,7 @@ void Listas(Lista lista, int opc){
 		getchar();
 		break;
 	}
-
+       
 	case 2:{
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
@@ -144,12 +145,12 @@ do {
 			break;
 		}
 		case 2:{
-		printf("Ingrese la accion a realizar sobre la lista:\n 1)Insercion al inicio\n 2)insercion al final\n 3)suprimir al inicio\n 4)suprimir al final\n 5)eliminar repetidos\n 6)encotrar x\n 7)recuperar primero\n 8)recuperar ultimo\n 9)recuperar sucesor\n 10) recuperar predecesor\n 11)Mostrar lista\n 12)salir  \n");
+		printf("Ingrese la accion a realizar sobre la lista:\n 1)encolar 2)desencolar  \n");
 		scanf("%d", &opc);
 		Colas(cola, opc);
 		break;}
 		case 3:{
-		printf("Ingrese la accion a realizar sobre la lista:\n 1)Insercion al inicio\n 2)insercion al final\n 3)suprimir al inicio\n 4)suprimir al final\n 5)eliminar repetidos\n 6)encotrar x\n 7)recuperar primero\n 8)recuperar ultimo\n 9)recuperar sucesor\n 10) recuperar predecesor\n 11)Mostrar lista\n 12)salir  \n");
+		printf("Ingrese la accion a realizar sobre la lista:\n 1)ingresar al final 2)sacar al final  \n");
 		scanf("%d", &opc);
 		Pilas(pila, opc);
 		break;}
