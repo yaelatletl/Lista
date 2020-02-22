@@ -64,7 +64,7 @@ do {
 	case 6: 		//Aqui se busca un elemto determinado en la lista
 	{
 		printf("Dame un numero a buscar\n");
-		scanf("%d", &x);
+		scanf("%d", &x); 
 		y = lista.recuperar_pos_elemento(x, &bandera);
 		if (bandera==OK)	printf("La posicion del elemento %d es %d \n", x, y);
 		getchar();

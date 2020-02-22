@@ -18,7 +18,7 @@ public:
     return recuperar_ultimo(bandera);
     if (*bandera!=OK) printf("No se pudo recuperar ultimo\n");
   }//Manejo de estado
-  void estado(int* bandera){
+  void estado(int* bandera){ 
       if(lista_vacia(bandera)){
           printf("La Pila esta vacia \n");
       }else {

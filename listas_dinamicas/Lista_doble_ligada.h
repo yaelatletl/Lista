@@ -23,7 +23,7 @@ public:
 bool lista_vacia(int* bandera){
        if(Lista==NULL){ printf("Lista vacia\n"); *bandera = 1; return true; }//significa lista vacia
        else {
-       	printf("La lista no estaba vacia a lista_vacia, bandera = %d\n", *bandera);
+      
     *bandera = 0;
 	   return false;} //significa lista no vacia
    }
@@ -42,7 +42,6 @@ else {
 int recuperar_ultimo(int* bandera){
   Nodo *temp;
 if(lista_vacia(bandera)){
-  printf("Lista vacia\n");
   return -1;}
   else {
   temp = Lista;
@@ -88,14 +87,14 @@ else {
 //Funcion para recuperar la posicion del elemento indicado
 int recuperar_pos_elemento(int x, int* bandera){
   Nodo *temp;
-  int i = 0;
+  int i = 1;
 temp = Lista;
 if(lista_vacia(bandera)) return -1;
-  while (temp->sig!=NULL) {
+  do{
     if (temp->dato==x) return i;
     temp = temp->sig;
     i++;
-  }
+  }while (temp!=NULL);
   printf("No se encontro el numero\n");
   *bandera = 1;
   return -1;
@@ -137,10 +136,10 @@ void insertar_final(int x,int* bandera){
   temp->sig = NULL;
   temp->ant = NULL;
   temp->dato = x;
-  if (lista_vacia(bandera)){ printf("Se apunta hacia temporal, debido al vacio");Lista = temp; *bandera=OK; return;}
+  if (lista_vacia(bandera)){ Lista = temp; *bandera=OK; return;}
   aux = Lista;
   while(aux->sig!=NULL) {
-  aux = aux->sig;  printf("Recorriendo lista\n");}
+  aux = aux->sig;  }
   temp->ant = aux;
   aux->sig = temp;
 }
@@ -167,10 +166,10 @@ int suprimir_ultimo(int* bandera){
   while(temp->sig!=NULL){
   
     temp = temp->sig;
-    printf("Termina primer ciclo\n");
+
   }
   aux = temp->dato;
-  printf("LLegado aqui, aux existe y es: %d\n", aux);
+
   if(temp->ant!=NULL) temp->ant->sig = NULL;
   else Lista = NULL;
   free(temp);
@@ -189,7 +188,9 @@ void eliminar_duplicados(int* bandera){
         temp->sig = temp2->sig;
         temp2->sig->ant = temp;
         free(temp2);
+        
         eliminar_duplicados(bandera);
+        temp2 = temp;
       }
       temp2 = temp2->sig;
 
@@ -197,16 +198,16 @@ void eliminar_duplicados(int* bandera){
     temp = temp->sig;
   }
 }
-
+ 
 
 //Funcion para mostrar los elementos
 void mostrar_elementos(int* bandera){
   Nodo *temp;
   if(lista_vacia(bandera)) return;
   temp = Lista;
-  while(temp->sig!=NULL){
+  do{
     printf("%d\n", temp->dato);
     temp = temp->sig;
-  }
+  }while(temp!=NULL);
 }
 };
