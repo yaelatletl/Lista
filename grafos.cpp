@@ -219,63 +219,63 @@ void menu(){
 		l.Insertarv(3);//creamos y asignamos valores a nuestros vertices o nodos
 		l.Insertarv(4);
 		l.Insertarv(5);
-		l.creararco(1,2,1, bandera);
-		l.creararco(2,1,1, bandera);
-		l.creararco(1,4,2, bandera);
-		l.creararco(4,1,2, bandera) ;
-		l.creararco(4,3,3, bandera);
-		l.creararco(3,4,3, bandera);
-		l.creararco(3,2,4, bandera);
-		l.creararco(2,3,4, bandera);
-		l.creararco(4,5,5, bandera);
-		l.creararco(5,4,5, bandera);
-		l.creararco(5,2,6, bandera);
-		l.creararco(2,5,6, bandera);
+		l.creararco(1,2,1, &bandera);
+		l.creararco(2,1,1, &bandera);
+		l.creararco(1,4,2, &bandera);
+		l.creararco(4,1,2, &bandera) ;
+		l.creararco(4,3,3, &bandera);
+		l.creararco(3,4,3, &bandera);
+		l.creararco(3,2,4, &bandera);
+		l.creararco(2,3,4, &bandera);
+		l.creararco(4,5,5, &bandera);
+		l.creararco(5,4,5, &bandera);
+		l.creararco(5,2,6, &bandera);
+		l.creararco(2,5,6, &bandera);
 		
-		cout<<"\n"; //salto de linea
-	cout<<"\n\n\tGRAFO DIRIGIDO ALGORITMOS||UCN"; //mensaje
-	cout<<"\n"; 
-    cout<<"\n\n\t1. Mostrar Matriz Adyacente";  
-    cout<<"\n\n\t2. Buscar"; 
-    cout<<"\n\n\t3. Salir";
-    cout<<"\n"; 
-	cout<<"\n"; 
-    cout<<"\nIngrese opcion: ";
-	cin>>op1; 
+		printf("\n"); //salto de linea
+	printf("\n\n\tGRAFO DIRIGIDO ALGORITMOS||UCN"); //mensaje
+	printf("\n"); 
+    printf("\n\n\t1. Mostrar Matriz Adyacente");  
+    printf("\n\n\t2. Buscar"); 
+    printf("\n\n\t3. Salir");
+    printf("\n"); 
+	printf("\n"); 
+    printf("\nIngrese opcion: ");
+	scanf("%d", &op1); 
 switch(op1){
 case 1:
 	system("cls");
-    cout<<"\n"; //salto de liena
-  	cout<<"\n\n\tMATRIZ DE ADYACENCIA"<<"\n\n"; //mensaje
-	l.CrearMatriz(); //llamamos a nuestra función para que cree la matriz con los datos ingresados
+    printf("\n"); //salto de liena
+  	printf("\n\n\tMATRIZ DE ADYACENCIA\n\n"); //mensaje
+	l.CrearMatriz(&bandera); //llamamos a nuestra función para que cree la matriz con los datos ingresados
 	l.mostrarmatriz(); //mostramos la matriz adyacente.	
-    cout<<"\n";
-    cout<<"\n";
+    printf("\n");
+    printf("\n");
     system("pause");
     menu();
 break;
 
 case 2:
 	system("cls");
-	cout<<"\nIngrese numero que desea buscar: ";
-	cin>>valor;
-	l.Buscarv(valor); //función para buscar valores en nuestro grafo
-	cout<<"\n";
-	cout<<"\n";
+	printf("\nIngrese numero que desea buscar: ");
+	scanf("%d",valor);
+	l.Buscarv(valor, &bandera); //función para buscar valores en nuestro grafo
+	printf("\n");
+	printf("\n");
 	system("pause");
 	menu();
 break;
 case 3:
 system("cls");
-cout<<"\n";			
-cout<<"\n\n\tUCN INGENIERIA INFORMATICA!"; //termina nuestro programa 
-cout<<"\n";
+printf("\n");			
+printf("\n\n\tUCN INGENIERIA INFORMATICA!"); //termina nuestro programa 
+printf("\n");
 return;	
 break;
 default: 
         system("cls");  
-        cout<<"\n\n\tOPCION NO VALIDA"; //manejo de excepciones.
-        cout<<"\n";	
+        printf("\n\n\tOPCION NO VALIDA"); //manejo de excepciones.
+        printf("\n");	
         system("pause");
 		menu();
 		break;
