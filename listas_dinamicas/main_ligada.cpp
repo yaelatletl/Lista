@@ -8,17 +8,20 @@
 
 
 
-
+//Main
 int main(int argc, char** argv) {
 int x, y, opc=0, bandera = 0;
 
+//Creacion de lista, cola, pila
 Lista lista;
 Cola cola;
 Pila pila;
+//Menu principal
 do {
 	printf("Ingrese donde quiere realizar operaciones \n1.- Lista\n2.- Cola\n3.- Pila\n");
 	scanf("%d", &opc);
 	switch (opc) {
+		//Menu lista
 		case 1:{
 			printf("Ingrese la accion a realizar sobre la lista:\n1) Insercion al inicio\n2) Insercion al final\n3) Suprimir al inicio\n4) Suprimir al final\n5) Eliminar repetidos\n6) Encotrar x\n7) Recuperar primero\n8) Recuperar ultimo\n9) Recuperar sucesor\n10) Recuperar predecesor\n11) Mostrar lista\n12) Salir  \n");
 			scanf("%d", &opc);
@@ -105,9 +108,10 @@ do {
 		break;
 	}
 
-	} //Fin de switch
+	} //Fin de switch lista
 			break;
 		}
+		//Menu cola	
 		case 2:{
 		printf("Ingrese la accion a realizar sobre la cola:\n 1) Encolar\n 2) Desencolar\n 3) Buscar\n 4) Estado \n");
 		scanf("%d", &opc);
@@ -139,7 +143,8 @@ do {
 		}
 
 	}
-		break;}
+		break;}//Fin de switch cola
+		//Menu pila
 		case 3:{
 		printf("Ingrese la accion a realizar sobre la pila:\n1) Ingresar al final\n2) Sacar al final \n3) Recurperar tope \n4) Estado \n");
 		scanf("%d", &opc);
@@ -169,12 +174,12 @@ do {
 		}
 
 	}
-		break;}
+		break;}//Fin de switch pila
 	}
 
 
 
-//lista de opciones
+//Fin lista de opciones
 
 
 
