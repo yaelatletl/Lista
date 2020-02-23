@@ -27,7 +27,7 @@ do {
 			scanf("%d", &opc);
 			switch(opc) {
 				
-	case 1: {
+
 	case 1: {		//Aqui se inserta un valor al inicio de la lista
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
@@ -163,7 +163,7 @@ do {
 			break;
 		}
 		case 3:{		//Aqui se recupera el ultimo elemento de la pila o tope de la pila
-			y = pila.ultimo(&bandera));
+			y = pila.ultimo(&bandera);
 
 			if (bandera==OK) printf("El tope de pila es %d \n", y);
 			break;
