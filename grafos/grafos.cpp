@@ -3,7 +3,7 @@
 #define Max 100
 using namespace std;
 
-void menu();
+void menu();//prototipo de funcion menu
 
 //matriz de adyacencia
 int MatrizAdyacente[Max][Max]; //creamos una matriz para mostrar la matiz adyacente
@@ -150,6 +150,7 @@ bool BuscarAdy(pnodo aux,int ad){ //función booleana para poder realizar la matr
 	 return a=false;// sino retornamos a falso  
 }
 
+
 pnodo Buscarv(int valor, int* bandera){ //función para buscar valores dentro de nuestro grafo
 	int z;
 	pnodo indice,n=NULL; //creamos un nuevo nodo e igualamos a la varible n a NULL
@@ -163,6 +164,7 @@ pnodo Buscarv(int valor, int* bandera){ //función para buscar valores dentro de 
     *bandera = 1;
  return n; // si el valor buscado no esta en la lista retorna nulo
 }
+
 
 void CrearMatriz(int* bandera){ //función para crear nuestra matriz adyacente.
      pnodo nodo=primero,nodotemp; //creamos un nuevo puntero y lo igualamos.
@@ -206,80 +208,96 @@ void mostrarmatriz(){ //función para mostrar nuestra matriz adyacente.
 }
 };
 int main(){ //función principal.
+int op1=0,valor=0, bandera=0,x=0,y=0,peso=0; //creamos 2 varibles enteras y una bandera para manejar las excepciones.
+lista l; //creamos una nueva clase.
+do{
 menu();
+  printf("\nIngrese opcion: ");
+	scanf("%d", &op1); 
+	
+	switch(op1){
+		
+		case 1:
+			printf("\ningrese el valor(id) del vertice : ");
+			scanf("%d", &x); 
+			l.Insertarv(x); //creamos y asignamos valores a nuestros vertices o nodos
+			break;
+			
+		case 2:
+			printf("\n!!Creacion de ARISTA!!");
+			printf("ingrese el valor (id) del vertice predecesor : ");
+			scanf("%d", &x);												//creamos los arcos entre los vertices
+				printf("ingrese el valor (id) del vertice sucesor : ");
+			scanf("%d", &y);
+				printf("ingrese el peso de la arista : ");
+			scanf("%d", &peso);
+			l.creararco(x,y,peso,&bandera);
+			break;
+			
+		case 3:
+			 printf("\n");// salto ce linea
+    printf("\n");
+			printf("\n\n\tMATRIZ DE ADYACENCIA\n\n"); //mensaje
+				l.CrearMatriz(&bandera); //llamamos a nuestra función para que cree la matriz con los datos ingresados
+				l.mostrarmatriz(); //mostramos la matriz adyacente.	
+				
+				 printf("\n");
+    printf("\n");
+    
+    			break;//fin de caso
+    			
+    			
+    	case 4:
+    		printf("\n!!Cardinalidad!!\n"); //se muestra la cantidad de vertices que hay en el Grafo
+    		printf("\nLa cardinalidad de los vertices es : ",l.CantidadVertices());
+			break;
+			
+			
+		case 5:
+			printf("\nComprobar si exite un arco entre dos vertices\n");
+				printf("ingrese el valor (id) del vertice predecesor : ");
+			scanf("%d", &x);												//verificamos la relacion entre dos vertices
+				printf("ingrese el valor (id) del vertice sucesor : ");
+			scanf("%d", &y);
+			l.ExisteArco(x,y,&bandera);
+			break;
+			
+			
+		case 0:
+			printf("\n\n \t°°°°°° ADIOS°°°°°\n\n");
+			break;
+			
+			
+			
+			default:
+				printf("Opcion NO valida!!!!!!!!"); //caso especial  de no encontrar la opcion digitada
+				break;
+			
+	}
+
+	
+}while(op1!=0);// ciclo centinela
+
+
+
 return 0;//retornamos el control a nuestro sistema operativo.
 }
 
-void menu(){
-	system("cls");
-	int op1=0,valor=0, bandera=0; //creamos 2 varibles enteras.
-	lista l; //creamos una nueva clase.
-	   	l.Insertarv(1); 
-		l.Insertarv(2);
-		l.Insertarv(3);//creamos y asignamos valores a nuestros vertices o nodos
-		l.Insertarv(4);
-		l.Insertarv(5);
-		l.creararco(1,2,1, &bandera);
-		l.creararco(2,1,1, &bandera);
-		l.creararco(1,4,2, &bandera);
-		l.creararco(4,1,2, &bandera) ;
-		l.creararco(4,3,3, &bandera);
-		l.creararco(3,4,3, &bandera);
-		l.creararco(3,2,4, &bandera);
-		l.creararco(2,3,4, &bandera);
-		l.creararco(4,5,5, &bandera);
-		l.creararco(5,4,5, &bandera);
-		l.creararco(5,2,6, &bandera);
-		l.creararco(2,5,6, &bandera);
+void menu(){ //funcion menu
+
 		
 		printf("\n"); //salto de linea
-	printf("\n\n\tGRAFO DIRIGIDO ALGORITMOS||UCN"); //mensaje
+	printf("\n\n\tMENU DE GRAFOS"); //menu
 	printf("\n"); 
-    printf("\n\n\t1. Mostrar Matriz Adyacente");  
-    printf("\n\n\t2. Buscar"); 
-    printf("\n\n\t3. Salir");
+    printf("\n\n\t1. Insertar vertices al Grafo");  
+    printf("\n\n\t2. Crear Aristas"); 
+    printf("\n\n\t3. Matriz de Adyacencia");
+    printf("\n\n\t4. Cardinalidad del Grafo");
+    printf("\n\n\t5. Comprobar arco entre nodos Dirigidos");
+    printf("\n\n\t0. Salir");
     printf("\n"); 
 	printf("\n"); 
-    printf("\nIngrese opcion: ");
-	scanf("%d", &op1); 
-switch(op1){
-case 1:
-	system("cls");
-    printf("\n"); //salto de liena
-  	printf("\n\n\tMATRIZ DE ADYACENCIA\n\n"); //mensaje
-	l.CrearMatriz(&bandera); //llamamos a nuestra función para que cree la matriz con los datos ingresados
-	l.mostrarmatriz(); //mostramos la matriz adyacente.	
-    printf("\n");
-    printf("\n");
-    system("pause");
-    menu();
-break;
 
-case 2:
-	system("cls");
-	printf("\nIngrese numero que desea buscar: ");
-	scanf("%d",valor);
-	l.Buscarv(valor, &bandera); //función para buscar valores en nuestro grafo
-	printf("\n");
-	printf("\n");
-	system("pause");
-	menu();
-break;
-case 3:
-system("cls");
-printf("\n");			
-printf("\n\n\tUCN INGENIERIA INFORMATICA!"); //termina nuestro programa 
-printf("\n");
-return;	
-break;
-default: 
-        system("cls");  
-        printf("\n\n\tOPCION NO VALIDA"); //manejo de excepciones.
-        printf("\n");	
-        system("pause");
-		menu();
-		break;
-}
 }
 
 
