@@ -5,7 +5,7 @@ Angel Sanchez Cabrera
 Leonardo Emmanuel Perez Ocampo*/
 #include <stdio.h>
 #include <stdlib.h>
-
+#define OK 0
 #define MAX 50
 
 typedef struct Node {
@@ -22,7 +22,7 @@ public:
 bool lista_vacia(int* bandera){
        if(Lista==NULL){ printf("Lista vacia\n"); *bandera=1; return true; }//significa lista vacia
        else {
-         *bandera = 0;
+         *bandera = OK;
          return false; //significa lista no vacia
    }
  }
@@ -40,8 +40,7 @@ else {
 //recuperar ultimo
 int recuperar_ultimo(int* bandera){
   Nodo *temp;
-if(lista_vacia(bandera)){
-  printf("Lista vacia\n");}
+if(lista_vacia(bandera)){return -1;}
   else {
   temp = Lista;
   while(temp->sig!=NULL) temp = temp->sig;
@@ -79,7 +78,7 @@ else {
     temp = temp->sig;
     if (temp2->dato == x) break;
   }
-  if (temp==NULL){ printf("No hay sucesor para este numero\n"); return -1;}
+  if (temp==NULL){ printf("No hay sucesor para este numero\n"); *bandera = 1; return -1;}
   return temp->dato;}
 }
 
@@ -94,6 +93,7 @@ if(lista_vacia(bandera)) return -1;
     i++;
   }
   printf("No se encontro el numero\n");
+  *bandera = 1;
   return -1;
 }
 
@@ -126,7 +126,8 @@ void insertar_final(int x, int* bandera){
   Nodo *temp, *aux;
   temp->sig = NULL;
   temp->dato = x;
-  if (lista_vacia(bandera)) Lista = temp;
+  if (lista_vacia(bandera)) {*bandera = OK;
+  Lista = temp;}
   while(aux->sig!=NULL) aux = aux->sig;
   aux->sig = temp;
 }
@@ -183,7 +184,7 @@ void eliminar_duplicados(int* bandera){
 
 void mostrar_elementos(int* bandera){
   Nodo *temp;
-  if(lista_vacia(bandera)) return;
+  if(lista_vacia(bandera)) {printf("No hay elementos a mostrar \n"); return;}
   temp = Lista;
   while(temp->sig!=NULL){
     printf("%d\n", temp->dato);
