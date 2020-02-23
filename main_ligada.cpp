@@ -10,7 +10,7 @@
 
 
 int main(int argc, char** argv) {
-int x, y, opc=0;
+int x, y, opc=0, bandera = 0;
 
 Lista lista;
 Cola cola;
@@ -28,7 +28,7 @@ do {
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
 
-		lista.insertar_inicio(x);
+		lista.insertar_inicio(x, &bandera);
 		getchar();
 		break;
 	}
@@ -37,23 +37,23 @@ do {
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
 
-		lista.insertar_final(x);
+		lista.insertar_final(x, &bandera);
 		getchar();
 		break;
 	}
 	case 3:{
-		x = lista.suprimir_primero();
+		x = lista.suprimir_primero(&bandera);
 		if (x!=-1) printf("Se ha eliminado el numero %d \n", x );
 		break;
 	}
 
 	case 4:{
-		x = lista.suprimir_ultimo();
+		x = lista.suprimir_ultimo(&bandera);
 		if(x!=-1) printf("Se ha eliminado el numero %d \n", x );
 		break;
 	}
 	case 5: {
-		lista.eliminar_duplicados();
+		lista.eliminar_duplicados(&bandera);
 		break;
 	}
 
@@ -61,30 +61,26 @@ do {
 	{
 		printf("Dame un numero a buscar\n");
 		scanf("%d", &x);
-		y = lista.recuperar_pos_elemento(x);
-		if (y == -1) printf("Elemento no encontrado\n");
-		else	printf("La posicion del elemento %d es %d \n", x, y);
+		y = lista.recuperar_pos_elemento(x, &bandera);
+		if (bandera==OK)	printf("La posicion del elemento %d es %d \n", x, y);
 		getchar();
 		break;
 	}
 	case 7: {
-		y = lista.recuperar_primero();
-		if (y==-1) printf("No es posible recuperar primero\n");
-		else printf("El elemento de la posicion inicial es %d \n", y );
+		y = lista.recuperar_primero(&bandera);
+		if (bandera==OK) printf("El elemento de la posicion inicial es %d \n", y );
 		break;
 	}
 	case 8: {
-		y = lista.recuperar_ultimo();
-		if (y==-1) printf("No es posible recuperar ultimo\n");
-		else printf("El elemento de la posicion final es %d \n", y );
+		y = lista.recuperar_ultimo(&bandera);
+		if (bandera == OK) printf("El elemento de la posicion final es %d \n", y );
 		break;
 	}
 	case 9: {
 		printf("Dame un numero a buscar\n");
 		scanf("%d", &x);
-		y = lista.recuperar_sucesor(x);
-		if (y==-1) printf("No es posible recuperar el sucesor");
-		else printf("El sucesor del numero %d es %d \n", x, y);
+		y = lista.recuperar_sucesor(x, &bandera);
+		if (bandera==OK) printf("El sucesor del numero %d es %d \n", x, y);
 
 
 
@@ -94,14 +90,13 @@ do {
 	case 10: {
 		printf("Dame un numero a buscar\n");
 		scanf("%d", &x);
-		y = lista.recuperar_predecesor(x);
-		if (y==-1) printf("No es posible recuperar predecesor\n");
-		else printf("El predecesor del numero %d es %d \n", x, y);
+		y = lista.recuperar_predecesor(x, &bandera);
+		if (bandera==OK) printf("El predecesor del numero %d es %d \n", x, y);
 		getchar();
 		break;
 	}
 	case 11:{
-		lista.mostrar_elementos();
+		lista.mostrar_elementos(&bandera);
 		break;
 	}
 
@@ -120,28 +115,26 @@ do {
 		case 1:{
 			printf("Dame el numero a ingresar\n");
 			scanf("%d", &x);
-			cola.encolar(x);
+			cola.encolar(x,&bandera);
 			getchar();
 			break;
 		}
 		case 2:{
-			y = cola.desencolar();
-			if (y==-1) printf("No es posible deseconlar\n");
-			else printf("El numero que se desencolo es %d\n", y);
+			y = cola.desencolar(&bandera);
+			if (bandera == OK) printf("El numero que se desencolo es %d\n", y);
 			break;
 		}
 
 		case 3:{
 			printf("Dame el numero a buscar\n");
 			scanf("%d", &x);
-			y = cola.recuperar(x);
-			if(y == -1) printf("Numero no encontrado\n");
-			else	printf("La posicion del numero %d es %d\n",x, y);
+			y = cola.recuperar(x, &bandera);
+			if(bandera==OK)	printf("La posicion del numero %d es %d\n",x, y);
 			getchar();
 			break;
 		}
 		case 4:{
-			cola.estado();
+			cola.estado(&bandera);
 			break;
 		}
 
@@ -154,24 +147,24 @@ do {
 		case 1:{
 			printf("Dame el numero a ingresar\n");
 			scanf("%d", &x);
-			pila.push(x);
+			pila.push(x,&bandera);
 			getchar();
 		break;
 		}
 		case 2:{
-			y = pila.pop();
-			if (y==-1) printf("No es posible popear\n");
-			else printf("Se popeo %d\n", y);
+			y = pila.pop(&bandera);
+			if (bandera==OK) printf("Se popeo %d\n", y);
 			break;
 		}
 		case 3:{
+			y = pila.ultimo(&bandera));
 
-			printf("El tope de pila es %d \n", pila.ultimo());
+			if (bandera==OK) printf("El tope de pila es %d \n", y);
 			break;
 
 		}
 		case 4:{
-			pila.estado();
+			pila.estado(&bandera);
 			break;
 		}
 
