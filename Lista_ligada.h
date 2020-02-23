@@ -18,8 +18,8 @@ protected:
 Nodo *Lista;
 
 public:
-bool lista_vacia(){
-       if(Lista==NULL){ printf("Lista vacia\n"); return true; }//significa lista vacia
+bool lista_vacia(int* bandera){
+       if(Lista==NULL){ printf("Lista vacia\n"); *bandera=1 return true; }//significa lista vacia
        else return false; //significa lista no vacia
    }
 
@@ -174,9 +174,9 @@ void eliminar_duplicados(){
 
 
 
-void mostrar_elementos(){
+void mostrar_elementos(int* bandera){
   Nodo *temp;
-  if(lista_vacia()) return;
+  if(lista_vacia(&bandera)) return;
   temp = Lista;
   while(temp->sig!=NULL){
     printf("%d\n", temp->dato);
@@ -194,7 +194,7 @@ public:
     return suprimir_ultimo();
   }
   int ultimo(){
-    return recuperar_ultimo();
+    return recuperar_ultimo(&bandera);
   }
   void estado(){
       if(lista_vacia()){
@@ -213,11 +213,13 @@ public:
     insertar_final(x);
   }
 
-  int desencolar(){
-    return suprimir_primero();
+  int desencolar(int* bandera){
+    return suprimir_primero(&bandera);
+    if (bandera==1) printf("No se puede deseconlar\n");
   }
-  int recuperar(int x){
-    return recuperar_pos_elemento(x);
+  int recuperar(int x, int* bandera){
+    return recuperar_pos_elemento(x, &bandera);
+    if (bandera==1) printf("No se puede recuperar la posicion del elemento %d\n", x);
   }
   void estado(){
       if(lista_vacia()){
