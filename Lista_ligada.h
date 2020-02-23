@@ -4,10 +4,11 @@ Yael Atletl Bueno Rojas
 Angel Sanchez Cabrera
 Leonardo Emmanuel Perez Ocampo*/
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAX 50
 
-typdef struct Node {
+typedef struct Node {
   int dato;
   struct Node *sig;
 } Nodo;
@@ -30,7 +31,7 @@ bool lista_vacia(int* bandera){
 
 int recuperar_primero(int * bandera){
 
-if(lista_vacia(&bandera)) return;
+if(lista_vacia(bandera)) return -1;
 else {
   return Lista->dato;
  }
@@ -39,7 +40,7 @@ else {
 //recuperar ultimo
 int recuperar_ultimo(int* bandera){
   Nodo *temp;
-if(lista_vacia(&bandera)){
+if(lista_vacia(bandera)){
   printf("Lista vacia\n");}
   else {
   temp = Lista;
@@ -50,7 +51,7 @@ if(lista_vacia(&bandera)){
 
 int recuperar_predecesor(int x, int* bandera){
   Nodo *temp, *temp2;
-  if(lista_vacia(&bandera)) return;
+  if(lista_vacia(bandera)) return-1;
   temp = Lista;
   temp2 = temp;
   while (temp->sig!=NULL) {
@@ -60,6 +61,7 @@ int recuperar_predecesor(int x, int* bandera){
   }
   if (temp2 == Lista){
     printf("No hay antecesor\n");
+    *bandera = 1;
     return -1;}
   else{
     return temp2->dato;
@@ -68,7 +70,8 @@ int recuperar_predecesor(int x, int* bandera){
 
 //recuperar predecesor
 int recuperar_sucesor(int x, int* bandera){
-if(lista_vacia(&bandera)) return -1;
+	Nodo *temp, *temp2;
+if(lista_vacia(bandera)) return -1;
 else {
   temp = temp2 = Lista;
   while (temp->sig!=NULL) {
@@ -84,26 +87,28 @@ int recuperar_pos_elemento(int x, int* bandera){
   Nodo *temp;
   int i = 0;
 temp = Lista;
-if(lista_vacia(&bandera)) return -1;
+if(lista_vacia(bandera)) return -1;
   while (temp->sig!=NULL) {
     if (temp->dato==x) return i;
     temp = temp->sig;
     i++;
   }
-  printf("No se encontró el numero\n");
+  printf("No se encontro el numero\n");
   return -1;
 }
 
 //recuperar un elemento
 int recuperar_elemento(int pos, int* bandera){
+	Nodo *temp;
 int i=0;
-if(lista_vacia(&bandera)) return -1;
+if(lista_vacia(bandera)) return -1;
   while (temp->sig != NULL) {
     if (i==pos) return temp->dato;
     temp = temp->sig;
     i++;
   }
   printf("No hay tal cantidad de posiciones\n");
+  *bandera = 1;
   return -1;
 }
 
@@ -111,7 +116,7 @@ if(lista_vacia(&bandera)) return -1;
 
 void insertar_inicio(int x){
   Nodo *temp;
-  temp = malloc(sizeof(Nodo));
+  temp = (Nodo *)malloc(sizeof(Nodo));
   temp->sig = Lista;
   Lista = temp;
   temp->dato = x;
@@ -121,7 +126,7 @@ void insertar_final(int x, int* bandera){
   Nodo *temp, *aux;
   temp->sig = NULL;
   temp->dato = x;
-  if (lista_vacia(&bandera)) Lista = temp;
+  if (lista_vacia(bandera)) Lista = temp;
   while(aux->sig!=NULL) aux = aux->sig;
   aux->sig = temp;
 }
@@ -129,7 +134,7 @@ void insertar_final(int x, int* bandera){
 int suprimir_primero(int* bandera){
   int aux;
   Nodo *temp, *temp2;
-  if(lista_vacia(&bandera)) return -1;
+  if(lista_vacia(bandera)) return -1;
   temp = Lista;
   aux = Lista->dato;
   Lista = Lista->sig;
@@ -141,7 +146,7 @@ int suprimir_primero(int* bandera){
 int suprimir_ultimo(int* bandera){
   int aux;
   Nodo *temp, *temp2;
-  if(lista_vacia(&bandera)) return -1;
+  if(lista_vacia(bandera)) return -1;
   temp = Lista;
   do{
     temp2 = temp;
@@ -155,9 +160,9 @@ int suprimir_ultimo(int* bandera){
 
 //Eliminar duplicados
 
-void eliminar_duplicados(*int bandera){
+void eliminar_duplicados(int* bandera){
   Nodo *temp, *temp2;
-	if (lista_vacia(&bandera)) return;
+	if (lista_vacia(bandera)) return;
   temp = Lista;
   while(temp->sig!=NULL){
     temp2 = temp;
@@ -165,7 +170,7 @@ void eliminar_duplicados(*int bandera){
       if((temp!=temp2)&&(temp->dato == temp2->dato)){
         temp->sig = temp2->sig;
         free(temp2);
-        eliminar_duplicados();
+        eliminar_duplicados(bandera);
       }
       temp2 = temp2->sig;
 
@@ -178,7 +183,7 @@ void eliminar_duplicados(*int bandera){
 
 void mostrar_elementos(int* bandera){
   Nodo *temp;
-  if(lista_vacia(&bandera)) return;
+  if(lista_vacia(bandera)) return;
   temp = Lista;
   while(temp->sig!=NULL){
     printf("%d\n", temp->dato);
