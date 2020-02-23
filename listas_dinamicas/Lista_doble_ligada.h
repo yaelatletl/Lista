@@ -17,13 +17,14 @@ typedef struct Node {
 class Lista{
 protected:
 
-Nodo *Lista;
+Nodo *Lista = NULL;
 
 public:
 bool lista_vacia(int* bandera){
        if(Lista==NULL){ printf("Lista vacia\n"); *bandera = 1; return true; }//significa lista vacia
        else {
-    bandera = 0;
+       	printf("La lista no estaba vacia a lista_vacia, bandera = %d\n", *bandera);
+    *bandera = 0;
 	   return false;} //significa lista no vacia
    }
 
@@ -136,8 +137,10 @@ void insertar_final(int x,int* bandera){
   temp->sig = NULL;
   temp->ant = NULL;
   temp->dato = x;
-  if (lista_vacia(bandera)){Lista = temp; return;}
-  while(aux->sig!=NULL) aux = aux->sig;
+  if (lista_vacia(bandera)){ printf("Se apunta hacia temporal, debido al vacio");Lista = temp; *bandera=OK; return;}
+  aux = Lista;
+  while(aux->sig!=NULL) {
+  aux = aux->sig;  printf("Recorriendo lista\n");}
   temp->ant = aux;
   aux->sig = temp;
 }
@@ -150,7 +153,7 @@ int suprimir_primero(int* bandera){
   temp = Lista;
   aux = Lista->dato;
   Lista = Lista->sig;
-  Lista->ant = NULL;
+  if (Lista!=NULL) Lista->ant = NULL;
   free(temp);
   return aux;
   }
@@ -158,15 +161,18 @@ int suprimir_primero(int* bandera){
 //Funcion para suprimir al final
 int suprimir_ultimo(int* bandera){
   int aux;
-  Nodo *temp, *temp2;
-  if(Lista==NULL) return -1;
+  Nodo *temp;
+  if(lista_vacia(bandera)==true) return -1;
   temp = Lista;
-  do{
-    temp2 = temp;
+  while(temp->sig!=NULL){
+  
     temp = temp->sig;
-  }while(temp->sig!=NULL);
+    printf("Termina primer ciclo\n");
+  }
   aux = temp->dato;
-  temp2->sig = NULL;
+  printf("LLegado aqui, aux existe y es: %d\n", aux);
+  if(temp->ant!=NULL) temp->ant->sig = NULL;
+  else Lista = NULL;
   free(temp);
   return aux;
 }

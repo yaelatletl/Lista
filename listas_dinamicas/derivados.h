@@ -1,18 +1,8 @@
 //Manejo de librerias
-#ifdef S 
-#include "Lista_ligada.h"
-#endif
 
-#ifdef D 
-#include "Lista_doble_ligada_circular.h"
-#endif
-
-#ifndef D
-#ifndef S
 #include "Lista_doble_ligada.h"
 
-#endif
-#endif 
+
 //Manejo de excepciones pila
 class Pila: public Lista{
 public:

@@ -47,13 +47,13 @@ do {
 	}
 	case 3:{		//Aqui se elimina un valor al inicio de la lista
 		x = lista.suprimir_primero(&bandera);
-		if (x!=-1) printf("Se ha eliminado el numero %d \n", x );
+		if (bandera==OK) printf("Se ha eliminado el numero %d \n", x );
 		break;
 	}
 
 	case 4:{		//Aqui se elimina un valor al final de la lista
 		x = lista.suprimir_ultimo(&bandera);
-		if(x!=-1) printf("Se ha eliminado el numero %d \n", x );
+		if(bandera==OK) printf("Se ha eliminado el numero %d \n", x );
 		break;
 	}
 	case 5: {		//Aqui se eliminan los elementos diplicados
@@ -138,7 +138,7 @@ do {
 			getchar();
 			break;
 		}
-		case 4:{		//Aqui se muestra el estado de la cola, si est� llena o no
+		case 4:{		//Aqui se muestra el estado de la cola, si esta llena o no
 			cola.estado(&bandera);
 			break;
 		}
