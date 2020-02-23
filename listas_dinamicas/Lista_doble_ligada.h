@@ -27,7 +27,7 @@ bool lista_vacia(int* bandera){
 	   return false;} //significa lista no vacia
    }
 
-//Función para recuperar primero
+//Funcion para recuperar primero
 
 int recuperar_primero(int* bandera){
 
@@ -37,7 +37,7 @@ else {
  }
 }
 
-//Función para recuperar ultimo
+//Funcion para recuperar ultimo
 int recuperar_ultimo(int* bandera){
   Nodo *temp;
 if(lista_vacia(bandera)){
@@ -50,7 +50,7 @@ if(lista_vacia(bandera)){
   }
 }
 
-//Función para recuperar predecesor
+//Funcion para recuperar predecesor
 int recuperar_predecesor(int x, int* bandera){
   Nodo *temp, *temp2;
   if(lista_vacia(bandera)) return -1;
@@ -69,7 +69,7 @@ int recuperar_predecesor(int x, int* bandera){
   }
 }
 
-//Función para recuperar sucesor
+//Funcion para recuperar sucesor
 int recuperar_sucesor(int x, int* bandera){
 	Nodo *temp, *temp2;
 if(lista_vacia(bandera)) return -1;
@@ -84,7 +84,7 @@ else {
   return temp->dato;}
 }
 
-//Función para recuperar la posición del elemento indicado
+//Funcion para recuperar la posicion del elemento indicado
 int recuperar_pos_elemento(int x, int* bandera){
   Nodo *temp;
   int i = 0;
@@ -100,7 +100,7 @@ if(lista_vacia(bandera)) return -1;
   return -1;
 }
 
-//Función para recuperar un elemento
+//Funcion para recuperar un elemento
 int recuperar_elemento(int pos, int* bandera){
 	Nodo *temp;
 int i=0;
@@ -115,7 +115,7 @@ if(lista_vacia(bandera)) return -1;
   return -1;
 }
 
-//Función para insertar al inicio
+//Funcion para insertar al inicio
 void insertar_inicio(int x, int* bandera){
   Nodo *temp;
   temp = (Nodo *)malloc(sizeof(Nodo));
@@ -129,7 +129,7 @@ void insertar_inicio(int x, int* bandera){
 
 }
 
-//Función para insertar al final
+//Funcion para insertar al final
 void insertar_final(int x,int* bandera){
   Nodo *temp, *aux;
   temp = (Nodo *)malloc(sizeof(Nodo));
@@ -142,7 +142,7 @@ void insertar_final(int x,int* bandera){
   aux->sig = temp;
 }
 
-//Función para suprimir al inicio
+//Funcion para suprimir al inicio
 int suprimir_primero(int* bandera){
   int aux;
   Nodo *temp;
@@ -155,7 +155,7 @@ int suprimir_primero(int* bandera){
   return aux;
   }
 
-//Función para suprimir al final
+//Funcion para suprimir al final
 int suprimir_ultimo(int* bandera){
   int aux;
   Nodo *temp, *temp2;
@@ -171,7 +171,7 @@ int suprimir_ultimo(int* bandera){
   return aux;
 }
 
-//Función para eliminar duplicados
+//Funcion para eliminar duplicados
 void eliminar_duplicados(int* bandera){
   Nodo *temp, *temp2;
 	if (lista_vacia(bandera)) return;
@@ -193,7 +193,7 @@ void eliminar_duplicados(int* bandera){
 }
 
 
-//Función para mostrar los elementos
+//Funcion para mostrar los elementos
 void mostrar_elementos(int* bandera){
   Nodo *temp;
   if(lista_vacia(bandera)) return;
@@ -204,4 +204,3 @@ void mostrar_elementos(int* bandera){
   }
 }
 };
-
