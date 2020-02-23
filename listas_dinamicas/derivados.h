@@ -4,12 +4,13 @@
 #endif
 
 #ifdef D 
-#include "Lista_doble_ligada.h"
+#include "Lista_doble_ligada_circular.h"
 #endif
 
 #ifndef D
 #ifndef S
-#include "Lista_doble_ligada_circular.h"
+#include "Lista_doble_ligada.h"
+
 #endif
 #endif 
 //Manejo de excepciones pila

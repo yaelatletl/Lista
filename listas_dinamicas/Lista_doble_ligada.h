@@ -5,6 +5,7 @@ Angel Sanchez Cabrera
 Leonardo Emmanuel Perez Ocampo*/
 #include <stdio.h>
 #include <stdlib.h>
+#define OK 0
 #define MAX 50
 
 typedef struct Node {
