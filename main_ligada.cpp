@@ -4,7 +4,7 @@
 //Leonardo Emmanuel Perez Ocampo
 
 #include <stdio.h>
-#include "Lista_ligada.h"
+#include "derivados.h"
 
 
 
