@@ -1,3 +1,10 @@
+/*  GRAFO
+Angel Sanchez Cabrera
+Yael Atletl Bueno Rojas	
+Leonardo Emmanuel Perez Ocampo
+Roberto Aguirre Coyotzi
+*/
+
 #include <stdio.h>
 #include<stdlib.h>      //librerias.
 #define Max 100
@@ -224,12 +231,12 @@ menu();
 			break;
 			
 		case 2:
-			printf("\n!!Creacion de ARISTA!!");
-			printf("ingrese el valor (id) del vertice predecesor : ");
+			printf("\n\n!!Creacion de ARISTA!!\n");
+			printf("\ningrese el valor (id) del vertice predecesor : ");
 			scanf("%d", &x);												//creamos los arcos entre los vertices
-				printf("ingrese el valor (id) del vertice sucesor : ");
+				printf("\ningrese el valor (id) del vertice sucesor : ");
 			scanf("%d", &y);
-				printf("ingrese el peso de la arista : ");
+				printf("\ningrese el peso de la arista : ");
 			scanf("%d", &peso);
 			l.creararco(x,y,peso,&bandera);
 			break;
@@ -248,18 +255,22 @@ menu();
     			
     			
     	case 4:
-    		printf("\n!!Cardinalidad!!\n"); //se muestra la cantidad de vertices que hay en el Grafo
+    		printf("\n\n!!Cardinalidad!!\n"); //se muestra la cantidad de vertices que hay en el Grafo
     		printf("\nLa cardinalidad de los vertices es : ",l.CantidadVertices());
 			break;
 			
 			
 		case 5:
-			printf("\nComprobar si exite un arco entre dos vertices\n");
+			printf("\n\nComprobar si exite un arco entre dos vertices\n");
 				printf("ingrese el valor (id) del vertice predecesor : ");
 			scanf("%d", &x);												//verificamos la relacion entre dos vertices
 				printf("ingrese el valor (id) del vertice sucesor : ");
 			scanf("%d", &y);
-			l.ExisteArco(x,y,&bandera);
+			if(l.ExisteArco(x,y,&bandera)==1){
+				printf("\nExiste un arco entre el vertice",x,"y el vertice",y);
+			}else{
+				printf("\nNO existe un arco entre el vertice",x,"y el vertice",y);
+			}
 			break;
 			
 			
@@ -270,7 +281,7 @@ menu();
 			
 			
 			default:
-				printf("Opcion NO valida!!!!!!!!"); //caso especial  de no encontrar la opcion digitada
+				printf("\n\nOpcion NO valida!!!!!!!!"); //caso especial  de no encontrar la opcion digitada
 				break;
 			
 	}
