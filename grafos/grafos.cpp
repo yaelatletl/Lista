@@ -15,6 +15,8 @@ void menu();//prototipo de funcion menu
 //matriz de adyacencia
 int MatrizAdyacente[Max][Max]; //creamos una matriz para mostrar la matiz adyacente
 //TODO: Reemplazar la matriz por una lista ligada de acceso con polinomio de direccionamiento 
+int M_cuadrada[Max][Max];
+int M_cubica[Max][Max];
 
 class nodoa { //creamos una clase y le damos como nombre nodoa.
    public: //creamos nuestro acceso público.
@@ -190,11 +192,12 @@ void CrearMatriz(int* bandera){ //función para crear nuestra matriz adyacente.
      delete nodotemp;  //eliminamos nodotemp al terminar los ciclos for.
 }
 
-void mostrarmatriz(){ //función para mostrar nuestra matriz adyacente.
+void mostrarmatriz(int op){ //función para mostrar nuestra matriz adyacente.
     int i,j,cant; //creamos varibales enteras
     pnodo nodo=primero; //creamos un nuevo puntero.
     cant=CantidadVertices(); //igulamos  la varibale creada anteriormente a la cantidad de vertices.
-	printf("   "); //espacios
+    if(op==3){
+    		printf("   "); //espacios
 	
     for(i=0;i<cant;i++){ //ciclo for.
 	printf("\t %d ",nodo->vertice); //mostramos los nodos o vertices del grafo.
@@ -211,8 +214,86 @@ void mostrarmatriz(){ //función para mostrar nuestra matriz adyacente.
          }
          nodo=nodo->siguiente; //igualamos los punteros para que muestre todos los datos.
          printf("\n"); //salto de linea.
-    }     
+    }  
+    	
+	}else if(op==6){
+			printf("   "); //espacios
+	
+    for(i=0;i<cant;i++){ //ciclo for.
+	printf("\t %d ",nodo->vertice); //mostramos los nodos o vertices del grafo.
+	nodo=nodo->siguiente; //igualamos los punteros para que muestre todos los vertices
+	}
+    nodo=primero; //igualamos los punteros
+	printf("\n\n"); //saltos de linea.
+	
+    for( i=0;i<cant;i++){ //ciclo for.
+    	
+		 printf("%d", nodo->vertice); //mostramos los vertices de nuestro grafo.
+         for(j=0;j<cant;j++){ //ciclo for
+			printf("\t%d ",M_cuadrada[i][j]); //mostramos los datos guardados en la matriz.
+         }
+         nodo=nodo->siguiente; //igualamos los punteros para que muestre todos los datos.
+         printf("\n"); //salto de linea.
+    }  
+		
+	}else{
+				printf("   "); //espacios
+	
+    for(i=0;i<cant;i++){ //ciclo for.
+	printf("\t %d ",nodo->vertice); //mostramos los nodos o vertices del grafo.
+	nodo=nodo->siguiente; //igualamos los punteros para que muestre todos los vertices
+	}
+    nodo=primero; //igualamos los punteros
+	printf("\n\n"); //saltos de linea.
+	
+    for( i=0;i<cant;i++){ //ciclo for.
+    	
+		 printf("%d", nodo->vertice); //mostramos los vertices de nuestro grafo.
+         for(j=0;j<cant;j++){ //ciclo for
+			printf("\t%d ",M_cubica[i][j]); //mostramos los datos guardados en la matriz.
+         }
+         nodo=nodo->siguiente; //igualamos los punteros para que muestre todos los datos.
+         printf("\n"); //salto de linea.
+    }  
+	}
+	  
 }
+
+void crearMcuadrada(){
+	int i,j,k,cant;
+	cant=CantidadVertices();
+	for(i=0;i<cant;i++){
+		
+		for(j=0;j<cant;j++){
+				M_cuadrada[i][j]=0;
+			for(k=0;k<cant;k++){
+				
+				M_cuadrada[i][j]+=MatrizAdyacente[i][k]*MatrizAdyacente[k][j];
+			}
+			
+		}
+	}
+	
+}
+
+void crearMcubica(){
+	int i,j,k,cant;
+	cant=CantidadVertices();
+	crearMcuadrada();
+	for(i=0;i<cant;i++){
+		
+		for(j=0;j<cant;j++){
+			M_cubica[i][j]=0;
+			for(k=0;k<cant;k++){
+				
+				M_cubica[i][j]+=M_cuadrada[i][k]*MatrizAdyacente[k][j];
+			}
+			
+		}
+	}
+	
+}
+
 };
 int main(){ //función principal.
 int op1=0,valor=0, bandera=0,x=0,y=0,peso=0; //creamos 2 varibles enteras y una bandera para manejar las excepciones.
@@ -246,7 +327,7 @@ menu();
     printf("\n");
 			printf("\n\n\tMATRIZ DE ADYACENCIA\n\n"); //mensaje
 				l.CrearMatriz(&bandera); //llamamos a nuestra función para que cree la matriz con los datos ingresados
-				l.mostrarmatriz(); //mostramos la matriz adyacente.	
+				l.mostrarmatriz(op1); //mostramos la matriz adyacente.	
 				
 				 printf("\n");
     printf("\n");
@@ -272,6 +353,32 @@ menu();
 				printf("\nNO existe un arco entre el vertice",x,"y el vertice",y);
 			}
 			break;
+			
+			
+		case 6:
+					 printf("\n");// salto ce linea
+    printf("\n");
+			printf("\n\n\tMATRIZ DE ADYACENCIA CUADRDA\n\n"); //mensaje
+				l.crearMcuadrada(); //llamamos a nuestra función para que cree la matriz con los datos ingresados
+				l.mostrarmatriz(op1); //mostramos la matriz adyacente.	
+				
+				 printf("\n");
+    printf("\n");
+    
+    			break;//fin de caso
+    			
+    			
+    	case 7:
+    						 printf("\n");// salto ce linea
+    printf("\n");
+			printf("\n\n\tMATRIZ DE ADYACENCIA CUBICA\n\n"); //mensaje
+				l.crearMcubica(); //llamamos a nuestra función para que cree la matriz con los datos ingresados
+				l.mostrarmatriz(op1); //mostramos la matriz adyacente.	
+				
+				 printf("\n");
+    printf("\n");
+    
+    			break;//fin de caso
 			
 			
 		case 0:
@@ -305,6 +412,8 @@ void menu(){ //funcion menu
     printf("\n\n\t3. Matriz de Adyacencia");
     printf("\n\n\t4. Cardinalidad del Grafo");
     printf("\n\n\t5. Comprobar arco entre nodos Dirigidos");
+    printf("\n\n\t6. M^2"); 
+    printf("\n\n\t7. M^3"); 
     printf("\n\n\t0. Salir");
     printf("\n"); 
 	printf("\n"); 
