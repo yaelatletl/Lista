@@ -3,54 +3,49 @@ Roberto Aguirre Coyotzi
 Yael Atletl Bueno Rojas
 Angel Sanchez Cabrera
 Leonardo Emmanuel Perez Ocampo*/
-
-/*
-Esta es una reimplementacion de la lista doble ligada, que permite almacenar
-apuntadores a cualquier tipo.
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #define OK 0
 #define MAX 50
 
+class Lista;
+
 typedef struct Node {
-  void *dato;
+  char dato;
   struct Node *sig;
+  Lista *adyacencia;
   struct Node *ant;
 } Nodo;
 
-class ListaDoble{
+class Lista{
 protected:
 
 Nodo *Lista = NULL;
 
 public:
 bool lista_vacia(int* bandera){
-	void* dummyPointer;
        if(Lista==NULL){ printf("Lista vacia\n"); *bandera = 1; return true; }//significa lista vacia
        else {
-
+      
     *bandera = 0;
 	   return false;} //significa lista no vacia
    }
 
 //Funcion para recuperar primero
 
-void* recuperar_primero(int* bandera){
-	void* dummyPointer;
+char recuperar_primero(int* bandera){
 
-if(lista_vacia(bandera)) return dummyPointer;
+if(lista_vacia(bandera)) return -1;
 else {
   return Lista->dato;
  }
 }
 
 //Funcion para recuperar ultimo
-void* recuperar_ultimo(int* bandera){
-	void* dummyPointer;
+char recuperar_ultimo(int* bandera){
   Nodo *temp;
 if(lista_vacia(bandera)){
-  return dummyPointer;}
+  return -1;}
   else {
   temp = Lista;
   while(temp->sig!=NULL) temp = temp->sig;
@@ -59,10 +54,9 @@ if(lista_vacia(bandera)){
 }
 
 //Funcion para recuperar predecesor
-void* recuperar_predecesor(void* x, int* bandera){
-	void* dummyPointer;
+char recuperar_predecesor(char x, int* bandera){
   Nodo *temp, *temp2;
-  if(lista_vacia(bandera)) return dummyPointer;
+  if(lista_vacia(bandera)) return -1;
   temp = Lista;
   temp2 = temp;
    do{
@@ -71,18 +65,17 @@ void* recuperar_predecesor(void* x, int* bandera){
   }while (temp->sig!=NULL);
   if (temp == Lista){
     printf("No hay antecesor\n");
-    return dummyPointer;}
+    return -1;}
   else{
     if (temp->ant != NULL) return temp->dato;
-    else{ printf("No hay antecesor\n"); return dummyPointer;}
+    else{ printf("No hay antecesor\n"); return -1;}
   }
 }
 
 //Funcion para recuperar sucesor
-void* recuperar_sucesor(void* x, int* bandera){
-	void* dummyPointer;
+char recuperar_sucesor(char x, int* bandera){
 	Nodo *temp, *temp2;
-if(lista_vacia(bandera)) return dummyPointer;
+if(lista_vacia(bandera)) return -1;
 else {
   temp = temp2 = Lista;
   while (temp->sig!=NULL) {
@@ -90,12 +83,12 @@ else {
     temp = temp->sig;
     if (temp2->dato == x) break;
   }
-  if (temp==NULL){ printf("No hay sucesor para este numero\n"); *bandera = 1; return dummyPointer;}
+  if (temp==NULL){ printf("No hay sucesor para este numero\n"); *bandera = 1; return -1;}
   return temp->dato;}
 }
 
 //Funcion para recuperar la posicion del elemento indicado
-int recuperar_pos_elemento(void *x, int* bandera){
+int recuperar_pos_elemento(char x, int* bandera){
   Nodo *temp;
   int i = 1;
 temp = Lista;
@@ -111,11 +104,10 @@ if(lista_vacia(bandera)) return -1;
 }
 
 //Funcion para recuperar un elemento
-void* recuperar_elemento(int pos, int* bandera){
-	void* dummyPointer;
+char recuperar_elemento(int pos, int* bandera){
 	Nodo *temp;
 int i=0;
-if(lista_vacia(bandera)) return dummyPointer;
+if(lista_vacia(bandera)) return -1;
   while (temp->sig != NULL) {
     if (i==pos) return temp->dato;
     temp = temp->sig;
@@ -123,12 +115,11 @@ if(lista_vacia(bandera)) return dummyPointer;
   }
   printf("No hay tal cantidad de posiciones\n");
   *bandera = 1;
-  return dummyPointer;
+  return -1;
 }
 
 //Funcion para insertar al inicio
-void insertar_inicio(void *x, int* bandera){
-	void* dummyPointer;
+void insertar_inicio(char x, int* bandera){
   Nodo *temp;
   temp = (Nodo *)malloc(sizeof(Nodo));
 
@@ -142,8 +133,7 @@ void insertar_inicio(void *x, int* bandera){
 }
 
 //Funcion para insertar al final
-void insertar_final(void *x,int* bandera){
-	void* dummyPointer;
+void insertar_final(char x,int* bandera){
   Nodo *temp, *aux;
   temp = (Nodo *)malloc(sizeof(Nodo));
   temp->sig = NULL;
@@ -158,11 +148,10 @@ void insertar_final(void *x,int* bandera){
 }
 
 //Funcion para suprimir al inicio
-void* suprimir_primero(int* bandera){
-	void* dummyPointer;
-  void* aux;
+char suprimir_primero(int* bandera){
+  char aux;
   Nodo *temp;
-  if(lista_vacia(bandera)) return dummyPointer;
+  if(lista_vacia(bandera)) return -1;
   temp = Lista;
   aux = Lista->dato;
   Lista = Lista->sig;
@@ -172,14 +161,13 @@ void* suprimir_primero(int* bandera){
   }
 
 //Funcion para suprimir al final
-void* suprimir_ultimo(int* bandera){
-	void* dummyPointer;
-  void* aux;
+char suprimir_ultimo(int* bandera){
+  char aux;
   Nodo *temp;
-  if(lista_vacia(bandera)==true) return dummyPointer;
+  if(lista_vacia(bandera)==true) return -1;
   temp = Lista;
   while(temp->sig!=NULL){
-
+  
     temp = temp->sig;
 
   }
@@ -203,7 +191,7 @@ void eliminar_duplicados(int* bandera){
         temp->sig = temp2->sig;
         temp2->sig->ant = temp;
         free(temp2);
-
+        
         eliminar_duplicados(bandera);
         temp2 = temp;
       }
@@ -213,7 +201,7 @@ void eliminar_duplicados(int* bandera){
     temp = temp->sig;
   }
 }
-
+ 
 
 //Funcion para mostrar los elementos
 void mostrar_elementos(int* bandera){
@@ -221,7 +209,7 @@ void mostrar_elementos(int* bandera){
   if(lista_vacia(bandera)) return;
   temp = Lista;
   do{
-    printf("%d\n", temp->dato);
+    printf("%c\n", temp->dato);
     temp = temp->sig;
   }while(temp!=NULL);
 }
