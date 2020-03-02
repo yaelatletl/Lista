@@ -26,6 +26,7 @@ Nodo *Lista = NULL;
 
 public:
 bool lista_vacia(int* bandera){
+	void* dummyPointer;
        if(Lista==NULL){ printf("Lista vacia\n"); *bandera = 1; return true; }//significa lista vacia
        else {
 
@@ -36,8 +37,9 @@ bool lista_vacia(int* bandera){
 //Funcion para recuperar primero
 
 void* recuperar_primero(int* bandera){
+	void* dummyPointer;
 
-if(lista_vacia(bandera)) return -1;
+if(lista_vacia(bandera)) return dummyPointer;
 else {
   return Lista->dato;
  }
@@ -45,9 +47,10 @@ else {
 
 //Funcion para recuperar ultimo
 void* recuperar_ultimo(int* bandera){
+	void* dummyPointer;
   Nodo *temp;
 if(lista_vacia(bandera)){
-  return -1;}
+  return dummyPointer;}
   else {
   temp = Lista;
   while(temp->sig!=NULL) temp = temp->sig;
@@ -57,8 +60,9 @@ if(lista_vacia(bandera)){
 
 //Funcion para recuperar predecesor
 void* recuperar_predecesor(void* x, int* bandera){
+	void* dummyPointer;
   Nodo *temp, *temp2;
-  if(lista_vacia(bandera)) return -1;
+  if(lista_vacia(bandera)) return dummyPointer;
   temp = Lista;
   temp2 = temp;
    do{
@@ -67,17 +71,18 @@ void* recuperar_predecesor(void* x, int* bandera){
   }while (temp->sig!=NULL);
   if (temp == Lista){
     printf("No hay antecesor\n");
-    return -1;}
+    return dummyPointer;}
   else{
     if (temp->ant != NULL) return temp->dato;
-    else{ printf("No hay antecesor\n"); return -1;}
+    else{ printf("No hay antecesor\n"); return dummyPointer;}
   }
 }
 
 //Funcion para recuperar sucesor
 void* recuperar_sucesor(void* x, int* bandera){
+	void* dummyPointer;
 	Nodo *temp, *temp2;
-if(lista_vacia(bandera)) return -1;
+if(lista_vacia(bandera)) return dummyPointer;
 else {
   temp = temp2 = Lista;
   while (temp->sig!=NULL) {
@@ -85,7 +90,7 @@ else {
     temp = temp->sig;
     if (temp2->dato == x) break;
   }
-  if (temp==NULL){ printf("No hay sucesor para este numero\n"); *bandera = 1; return -1;}
+  if (temp==NULL){ printf("No hay sucesor para este numero\n"); *bandera = 1; return dummyPointer;}
   return temp->dato;}
 }
 
@@ -107,9 +112,10 @@ if(lista_vacia(bandera)) return -1;
 
 //Funcion para recuperar un elemento
 void* recuperar_elemento(int pos, int* bandera){
+	void* dummyPointer;
 	Nodo *temp;
 int i=0;
-if(lista_vacia(bandera)) return -1;
+if(lista_vacia(bandera)) return dummyPointer;
   while (temp->sig != NULL) {
     if (i==pos) return temp->dato;
     temp = temp->sig;
@@ -117,11 +123,12 @@ if(lista_vacia(bandera)) return -1;
   }
   printf("No hay tal cantidad de posiciones\n");
   *bandera = 1;
-  return -1;
+  return dummyPointer;
 }
 
 //Funcion para insertar al inicio
 void insertar_inicio(void *x, int* bandera){
+	void* dummyPointer;
   Nodo *temp;
   temp = (Nodo *)malloc(sizeof(Nodo));
 
@@ -136,6 +143,7 @@ void insertar_inicio(void *x, int* bandera){
 
 //Funcion para insertar al final
 void insertar_final(void *x,int* bandera){
+	void* dummyPointer;
   Nodo *temp, *aux;
   temp = (Nodo *)malloc(sizeof(Nodo));
   temp->sig = NULL;
@@ -151,9 +159,10 @@ void insertar_final(void *x,int* bandera){
 
 //Funcion para suprimir al inicio
 void* suprimir_primero(int* bandera){
-  int aux;
+	void* dummyPointer;
+  void* aux;
   Nodo *temp;
-  if(lista_vacia(bandera)) return -1;
+  if(lista_vacia(bandera)) return dummyPointer;
   temp = Lista;
   aux = Lista->dato;
   Lista = Lista->sig;
@@ -164,9 +173,10 @@ void* suprimir_primero(int* bandera){
 
 //Funcion para suprimir al final
 void* suprimir_ultimo(int* bandera){
-  int aux;
+	void* dummyPointer;
+  void* aux;
   Nodo *temp;
-  if(lista_vacia(bandera)==true) return -1;
+  if(lista_vacia(bandera)==true) return dummyPointer;
   temp = Lista;
   while(temp->sig!=NULL){
 
