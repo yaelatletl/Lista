@@ -48,7 +48,7 @@ struct nodo { //creamos nuestro nodo principal.
   
     class lista; //creamos una clase lista
 };
-
+typedef nodo *pnodo;
 class Grafo {    
 	private:
 	//matriz de adyacencia
