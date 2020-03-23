@@ -9,6 +9,7 @@ class Nodo{
 	
 	Nodo *sig;
 	Arista *ady;
+	bool visto;
 	int id;
 	friend class Grafo;
 	
