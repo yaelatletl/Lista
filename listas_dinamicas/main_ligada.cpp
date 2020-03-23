@@ -27,7 +27,7 @@ do {
 			scanf("%d", &opc);
 			switch(opc) {
 				
-	case 1: {
+
 	case 1: {		//Aqui se inserta un valor al inicio de la lista
 		printf("Dame un numero a insertar\n");
 		scanf("%d", &x);
@@ -47,13 +47,13 @@ do {
 	}
 	case 3:{		//Aqui se elimina un valor al inicio de la lista
 		x = lista.suprimir_primero(&bandera);
-		if (x!=-1) printf("Se ha eliminado el numero %d \n", x );
+		if (bandera==OK) printf("Se ha eliminado el numero %d \n", x );
 		break;
 	}
 
 	case 4:{		//Aqui se elimina un valor al final de la lista
 		x = lista.suprimir_ultimo(&bandera);
-		if(x!=-1) printf("Se ha eliminado el numero %d \n", x );
+		if(bandera==OK) printf("Se ha eliminado el numero %d \n", x );
 		break;
 	}
 	case 5: {		//Aqui se eliminan los elementos diplicados
@@ -64,7 +64,7 @@ do {
 	case 6: 		//Aqui se busca un elemto determinado en la lista
 	{
 		printf("Dame un numero a buscar\n");
-		scanf("%d", &x);
+		scanf("%d", &x); 
 		y = lista.recuperar_pos_elemento(x, &bandera);
 		if (bandera==OK)	printf("La posicion del elemento %d es %d \n", x, y);
 		getchar();
@@ -138,7 +138,7 @@ do {
 			getchar();
 			break;
 		}
-		case 4:{		//Aqui se muestra el estado de la cola, si est� llena o no
+		case 4:{		//Aqui se muestra el estado de la cola, si esta llena o no
 			cola.estado(&bandera);
 			break;
 		}
@@ -163,7 +163,7 @@ do {
 			break;
 		}
 		case 3:{		//Aqui se recupera el ultimo elemento de la pila o tope de la pila
-			y = pila.ultimo(&bandera));
+			y = pila.ultimo(&bandera);
 
 			if (bandera==OK) printf("El tope de pila es %d \n", y);
 			break;

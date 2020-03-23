@@ -1,17 +1,8 @@
 //Manejo de librerias
-#ifdef S 
-#include "Lista_ligada.h"
-#endif
 
-#ifdef D 
 #include "Lista_doble_ligada.h"
-#endif
 
-#ifndef D
-#ifndef S
-#include "Lista_doble_ligada_circular.h"
-#endif
-#endif 
+
 //Manejo de excepciones pila
 class Pila: public Lista{
 public:
@@ -27,7 +18,7 @@ public:
     return recuperar_ultimo(bandera);
     if (*bandera!=OK) printf("No se pudo recuperar ultimo\n");
   }//Manejo de estado
-  void estado(int* bandera){
+  void estado(int* bandera){ 
       if(lista_vacia(bandera)){
           printf("La Pila esta vacia \n");
       }else {

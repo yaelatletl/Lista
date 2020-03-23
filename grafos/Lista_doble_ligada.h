@@ -8,9 +8,12 @@ Leonardo Emmanuel Perez Ocampo*/
 #define OK 0
 #define MAX 50
 
+class Lista;
+
 typedef struct Node {
-  int dato;
+  char dato;
   struct Node *sig;
+  Lista *adyacencia;
   struct Node *ant;
 } Nodo;
 
@@ -30,7 +33,7 @@ bool lista_vacia(int* bandera){
 
 //Funcion para recuperar primero
 
-int recuperar_primero(int* bandera){
+char recuperar_primero(int* bandera){
 
 if(lista_vacia(bandera)) return -1;
 else {
@@ -39,7 +42,7 @@ else {
 }
 
 //Funcion para recuperar ultimo
-int recuperar_ultimo(int* bandera){
+char recuperar_ultimo(int* bandera){
   Nodo *temp;
 if(lista_vacia(bandera)){
   return -1;}
@@ -51,7 +54,7 @@ if(lista_vacia(bandera)){
 }
 
 //Funcion para recuperar predecesor
-int recuperar_predecesor(int x, int* bandera){
+char recuperar_predecesor(char x, int* bandera){
   Nodo *temp, *temp2;
   if(lista_vacia(bandera)) return -1;
   temp = Lista;
@@ -70,7 +73,7 @@ int recuperar_predecesor(int x, int* bandera){
 }
 
 //Funcion para recuperar sucesor
-int recuperar_sucesor(int x, int* bandera){
+char recuperar_sucesor(char x, int* bandera){
 	Nodo *temp, *temp2;
 if(lista_vacia(bandera)) return -1;
 else {
@@ -85,7 +88,7 @@ else {
 }
 
 //Funcion para recuperar la posicion del elemento indicado
-int recuperar_pos_elemento(int x, int* bandera){
+int recuperar_pos_elemento(char x, int* bandera){
   Nodo *temp;
   int i = 1;
 temp = Lista;
@@ -101,7 +104,7 @@ if(lista_vacia(bandera)) return -1;
 }
 
 //Funcion para recuperar un elemento
-int recuperar_elemento(int pos, int* bandera){
+char recuperar_elemento(int pos, int* bandera){
 	Nodo *temp;
 int i=0;
 if(lista_vacia(bandera)) return -1;
@@ -116,7 +119,7 @@ if(lista_vacia(bandera)) return -1;
 }
 
 //Funcion para insertar al inicio
-void insertar_inicio(int x, int* bandera){
+void insertar_inicio(char x, int* bandera){
   Nodo *temp;
   temp = (Nodo *)malloc(sizeof(Nodo));
 
@@ -130,7 +133,7 @@ void insertar_inicio(int x, int* bandera){
 }
 
 //Funcion para insertar al final
-void insertar_final(int x,int* bandera){
+void insertar_final(char x,int* bandera){
   Nodo *temp, *aux;
   temp = (Nodo *)malloc(sizeof(Nodo));
   temp->sig = NULL;
@@ -145,8 +148,8 @@ void insertar_final(int x,int* bandera){
 }
 
 //Funcion para suprimir al inicio
-int suprimir_primero(int* bandera){
-  int aux;
+char suprimir_primero(int* bandera){
+  char aux;
   Nodo *temp;
   if(lista_vacia(bandera)) return -1;
   temp = Lista;
@@ -158,8 +161,8 @@ int suprimir_primero(int* bandera){
   }
 
 //Funcion para suprimir al final
-int suprimir_ultimo(int* bandera){
-  int aux;
+char suprimir_ultimo(int* bandera){
+  char aux;
   Nodo *temp;
   if(lista_vacia(bandera)==true) return -1;
   temp = Lista;
@@ -206,7 +209,7 @@ void mostrar_elementos(int* bandera){
   if(lista_vacia(bandera)) return;
   temp = Lista;
   do{
-    printf("%d\n", temp->dato);
+    printf("%c\n", temp->dato);
     temp = temp->sig;
   }while(temp!=NULL);
 }
