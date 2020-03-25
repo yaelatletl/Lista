@@ -4,8 +4,6 @@
 int main(){
 	Grafo G;
 	int opc,x,y,z;
-	
-	G.inicializar();
 	do{
 	G.menu();
 	scanf("%d",&opc);

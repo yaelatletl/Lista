@@ -1,10 +1,6 @@
 #include<stdio.h>
 #include"GP1.h"
 
-void Grafo :: inicializar(){
-	
-	raiz=NULL;
-}
 
 bool Grafo::vacio(){
 	if(raiz==NULL){
@@ -25,11 +21,11 @@ int Grafo::longitudg(){
 	return cont;
 }
 
-Nodo *Grafo::getnodo(int identificador){
+Nodo* Grafo::getnodo(int id){
 	Nodo *aux;
-	aux=raiz;
+	aux = raiz;
 	while(aux!=NULL){
-		if(aux->id==identificador){
+		if(aux->id==id){
 			return aux;
 		}
 		aux=aux->sig;
@@ -210,7 +206,7 @@ void Grafo::Adyacencia(Nodo*origen,Nodo*destino){
 }
 }
 
-void Grafo::RecorridoAnchura(Nodo*origen){
+void Grafo::RecorridoAnchura(Nodo *origen){
 	if(vacio()){
 		printf("\n\n ya que esta vacio no se puede realizar el recorrido\n\n");
 	}else{

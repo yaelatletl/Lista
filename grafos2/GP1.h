@@ -28,7 +28,7 @@ class Grafo{
 	
 	Nodo *raiz;
 	public:
-		void inicializar();
+		Grafo(){raiz=NULL;}
 		bool vacio();
 		int  longitudg();
 		Nodo *getnodo(int id);
