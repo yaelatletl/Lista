@@ -1,15 +1,19 @@
-/* Lista.h
+/*
+
+Lista.h
 Roberto Aguirre Coyotzi
 Yael Atletl Bueno Rojas
 Angel Sanchez Cabrera
-Leonardo Emmanuel Perez Ocampo*/
+Leonardo Emmanuel Perez Ocampo
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #define OK 0
 #define MAX 50
 
 typedef struct Node {
-  int dato;
+  void *dato;
   struct Node *sig;
   struct Node *ant;
 } Nodo;
@@ -23,26 +27,26 @@ public:
 bool lista_vacia(int* bandera){
        if(Lista==NULL){ printf("Lista vacia\n"); *bandera = 1; return true; }//significa lista vacia
        else {
-      
+
     *bandera = 0;
 	   return false;} //significa lista no vacia
    }
 
 //Funcion para recuperar primero
 
-int recuperar_primero(int* bandera){
+void *recuperar_primero(int* bandera){
 
-if(lista_vacia(bandera)) return -1;
+if(lista_vacia(bandera)) return NULL;
 else {
   return Lista->dato;
  }
 }
 
 //Funcion para recuperar ultimo
-int recuperar_ultimo(int* bandera){
+void *recuperar_ultimo(int* bandera){
   Nodo *temp;
 if(lista_vacia(bandera)){
-  return -1;}
+  return NULL;}
   else {
   temp = Lista;
   while(temp->sig!=NULL) temp = temp->sig;
@@ -51,9 +55,9 @@ if(lista_vacia(bandera)){
 }
 
 //Funcion para recuperar predecesor
-int recuperar_predecesor(int x, int* bandera){
+void *recuperar_predecesor(void *x, int* bandera){
   Nodo *temp, *temp2;
-  if(lista_vacia(bandera)) return -1;
+  if(lista_vacia(bandera)) return NULL;
   temp = Lista;
   temp2 = temp;
    do{
@@ -62,17 +66,17 @@ int recuperar_predecesor(int x, int* bandera){
   }while (temp->sig!=NULL);
   if (temp == Lista){
     printf("No hay antecesor\n");
-    return -1;}
+    return NULL;}
   else{
     if (temp->ant != NULL) return temp->dato;
-    else{ printf("No hay antecesor\n"); return -1;}
+    else{ printf("No hay antecesor\n"); return NULL;}
   }
 }
 
 //Funcion para recuperar sucesor
-int recuperar_sucesor(int x, int* bandera){
+void *recuperar_sucesor(void *x, int* bandera){
 	Nodo *temp, *temp2;
-if(lista_vacia(bandera)) return -1;
+if(lista_vacia(bandera)) return NULL;
 else {
   temp = temp2 = Lista;
   while (temp->sig!=NULL) {
@@ -80,12 +84,12 @@ else {
     temp = temp->sig;
     if (temp2->dato == x) break;
   }
-  if (temp==NULL){ printf("No hay sucesor para este numero\n"); *bandera = 1; return -1;}
+  if (temp==NULL){ printf("No hay sucesor para este numero\n"); *bandera = 1; return NULL;}
   return temp->dato;}
 }
 
 //Funcion para recuperar la posicion del elemento indicado
-int recuperar_pos_elemento(int x, int* bandera){
+int recuperar_pos_elemento(void *x, int* bandera){
   Nodo *temp;
   int i = 1;
 temp = Lista;
@@ -101,10 +105,10 @@ if(lista_vacia(bandera)) return -1;
 }
 
 //Funcion para recuperar un elemento
-int recuperar_elemento(int pos, int* bandera){
+void *recuperar_elemento(int pos, int* bandera){
 	Nodo *temp;
 int i=0;
-if(lista_vacia(bandera)) return -1;
+if(lista_vacia(bandera)) return NULL;
   while (temp->sig != NULL) {
     if (i==pos) return temp->dato;
     temp = temp->sig;
@@ -112,11 +116,11 @@ if(lista_vacia(bandera)) return -1;
   }
   printf("No hay tal cantidad de posiciones\n");
   *bandera = 1;
-  return -1;
+  return NULL;
 }
 
 //Funcion para insertar al inicio
-void insertar_inicio(int x, int* bandera){
+void insertar_inicio(void *x, int* bandera){
   Nodo *temp;
   temp = (Nodo *)malloc(sizeof(Nodo));
 
@@ -130,7 +134,7 @@ void insertar_inicio(int x, int* bandera){
 }
 
 //Funcion para insertar al final
-void insertar_final(int x,int* bandera){
+void insertar_final(void *x,int* bandera){
   Nodo *temp, *aux;
   temp = (Nodo *)malloc(sizeof(Nodo));
   temp->sig = NULL;
@@ -145,10 +149,10 @@ void insertar_final(int x,int* bandera){
 }
 
 //Funcion para suprimir al inicio
-int suprimir_primero(int* bandera){
-  int aux;
+void *suprimir_primero(int* bandera){
+  void *aux;
   Nodo *temp;
-  if(lista_vacia(bandera)) return -1;
+  if(lista_vacia(bandera)) return NULL;
   temp = Lista;
   aux = Lista->dato;
   Lista = Lista->sig;
@@ -158,13 +162,13 @@ int suprimir_primero(int* bandera){
   }
 
 //Funcion para suprimir al final
-int suprimir_ultimo(int* bandera){
-  int aux;
+void *suprimir_ultimo(int* bandera){
+  void *aux;
   Nodo *temp;
-  if(lista_vacia(bandera)==true) return -1;
+  if(lista_vacia(bandera)==true) return NULL;
   temp = Lista;
   while(temp->sig!=NULL){
-  
+
     temp = temp->sig;
 
   }
@@ -188,7 +192,7 @@ void eliminar_duplicados(int* bandera){
         temp->sig = temp2->sig;
         temp2->sig->ant = temp;
         free(temp2);
-        
+
         eliminar_duplicados(bandera);
         temp2 = temp;
       }
@@ -198,16 +202,6 @@ void eliminar_duplicados(int* bandera){
     temp = temp->sig;
   }
 }
- 
-
-//Funcion para mostrar los elementos
-void mostrar_elementos(int* bandera){
-  Nodo *temp;
-  if(lista_vacia(bandera)) return;
-  temp = Lista;
-  do{
-    printf("%d\n", temp->dato);
-    temp = temp->sig;
-  }while(temp!=NULL);
-}
+//Funcion para mostrar los elementos, necesita un override
+void mostrar_elementos(int* bandera);
 };
