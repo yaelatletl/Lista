@@ -4,6 +4,8 @@ class NodoGrafo: public Lista{
 public:
   char id;
   bool visitado;
+  NodoGrafo *anterior; //Para uso en Dijkstra
+  int peso;
   void agregar_arista();
   void mostar_adyacentes();
   NodoGrafo *obtener_adyacente(int pos);
@@ -24,7 +26,7 @@ public:
   bool agregar_arista(char id_origen, char id_destino);
   /*
   Pseudocodigo:
-  
+
   */
   Grafo obtener_arbol_minimo(char id_origen);
   bool existe_conexion(char id_origen, char id_destino);
