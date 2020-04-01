@@ -19,7 +19,7 @@ public:
   //Funciones de visualizacion
   void mostrar_adyacentes(int *bandera);
   void mostrar_elementos(int* bandera);
-  void mostrar_dijkstra(int* bandera);
+  void mostrar_dijkstra(char id, int* bandera);
   //Recorridos
   NodoGrafo *obtener_nodo_adyacente(int pos, int* bandera);
   Enlace *obtener_enlace_adyacente(int pos, int* bandera);
@@ -46,6 +46,19 @@ public:
 //FUNCIONES DE GRAFOS/NODOS ############################
 NodoGrafo::NodoGrafo(){
 	peso=-1;
+}
+void NodoGrafo::mostrar_dijkstra(char id, int *bandera){
+	NodoGrafo *Meta;
+	Meta = calcular_dijkstra(id, 0, this, bandera);
+	if (Meta!=NULL){
+		printf("El peso del camino es %d \n El recorrido es: \n", Meta->peso);
+		while(Meta!=NULL){
+			printf("%c<-", Meta->id);
+			Meta = Meta->anterior;
+		}
+		printf("\n");
+	}
+	else printf("No existe un nodo con id = &d o es inaccesible", id);
 }
 NodoGrafo* NodoGrafo::calcular_dijkstra(char id, int peso_inicial, NodoGrafo *actual, int *bandera){
   Enlace *temp;
