@@ -14,11 +14,12 @@ public:
   //Funciones de inicializacion
   NodoGrafo();
   void agregar_arista(char id_origen , char id_destino, int peso, bool bidireccional, int *bandera);
-
+  void reiniciar_pesos(int *bandera);
 
   //Funciones de visualizacion
   void mostrar_adyacentes(int *bandera);
   void mostrar_elementos(int* bandera);
+  void mostrar_dijkstra_desde(char id_origen, char id_destino, int *bandera);
   void mostrar_dijkstra(char id, int* bandera);
   //Recorridos
   NodoGrafo *obtener_nodo_adyacente(int pos, int* bandera);
@@ -87,7 +88,7 @@ NodoGrafo* NodoGrafo::calcular_dijkstra(char id, int peso_inicial, NodoGrafo *ac
       		return verificador;
 		  }
 	  }
-      
+
 	  }
   }while (temp!=NULL);
   return NULL;
