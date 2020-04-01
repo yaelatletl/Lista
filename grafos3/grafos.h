@@ -9,14 +9,26 @@ public:
   bool no_dirigido;
   NodoGrafo *anterior; //Para uso en Dijkstra
   int peso;
+
+
   //Funciones de inicializacion
   void agregar_arista(char id_origen , char id_destino, int peso, bool bidireccional);
+
+
+
   void mostrar_adyacentes(int *bandera);
   void mostrar_elementos(int* bandera);
+
+  //Recorridos
   NodoGrafo *obtener_adyacente(int pos, int* bandera);
-  NodoGrafo obtener_arbol_minimo(char id_origen);
+  NodoGrafo *obtener_arbol_minimo(char id_origen); //Via kurskal
+  NodoGrafo *buscar_nodo_profundidad(char id); //Obtiene un nodo atravez de la id, regresa NULL si no existe
+  NodoGrafo *buscar_nodo_ancho(char id); //Obtiene un nodo atravez de la id, regresa NULL si no existe
+  bool calcular_dijkstra(char id);
+
+
   bool existe_conexion(char id_origen, char id_destino);
-  NodoGrafo *obtener_nodo(char id); //Obtiene un nodo atravez de la id, regresa NULL si no existe
+
 };
 
 class Enlace{
@@ -35,25 +47,27 @@ Nodo *temp;
 if(lista_vacia(bandera)) return;
 temp = Lista;
 do{
-  printf("%d-->%d\n", ((Enlace*)(temp->dato))->origen->id, ((Enlace*)(temp->dato))->destino->id);
+  printf("%c-->%c\n", ((Enlace*)(temp->dato))->origen->id, ((Enlace*)(temp->dato))->destino->id);
   ((NodoGrafo*)(((Enlace*)(temp->dato))->destino))->mostrar_elementos(bandera);
   temp = temp->sig;
   }while(temp!=NULL);
 }
 
 NodoGrafo* NodoGrafo::obtener_adyacente(int pos, int* bandera){
-  return (NodoGrafo*)recuperar_elemento(pos, bandera);
+  return (NodoGrafo*)((Enlace*)recuperar_elemento(pos, bandera))->destino;
 }
 
 void NodoGrafo::mostrar_adyacentes(int *bandera){
-  Nodo *temp;
-  if(lista_vacia(bandera)) return;
-  temp = Lista;
+  NodoGrafo *temp;
+  int pos = 0;
   do{
-    printf("%d-->%d\n", ((NodoGrafo*)((Enlace*)(temp->dato))->destino)->id);
-    temp = temp->sig;
-    }while(temp!=NULL);
-  }
+  	temp = obtener_adyacente(pos++, bandera);
+  	if (temp!=NULL){
+  		printf("%c\n", temp->id);
+	  }
+
+  }while(temp!=NULL);
+}
 
 void NodoGrafo::agregar_arista(char id_origen , char id_destino, int peso, bool bidireccional, int *bandera){
 Enlace *arista_actual;
