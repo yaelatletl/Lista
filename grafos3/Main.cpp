@@ -1,5 +1,5 @@
 #include "grafos.h"
 
-int main(*char args[]){
+int main(){
 	return 0;
 }
