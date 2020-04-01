@@ -1,5 +1,5 @@
 #include "derivados.h"
-
+class Enlace;
 class NodoGrafo: public Lista{
 public:
   //Variables
@@ -12,19 +12,21 @@ public:
 
 
   //Funciones de inicializacion
-  void agregar_arista(char id_origen , char id_destino, int peso, bool bidireccional);
+  NodoGrafo();
+  void agregar_arista(char id_origen , char id_destino, int peso, bool bidireccional, int *bandera);
 
 
-
+  //Funciones de visualizacion
   void mostrar_adyacentes(int *bandera);
   void mostrar_elementos(int* bandera);
-
+  void mostrar_dijkstra(int* bandera);
   //Recorridos
-  NodoGrafo *obtener_adyacente(int pos, int* bandera);
+  NodoGrafo *obtener_nodo_adyacente(int pos, int* bandera);
+  Enlace *obtener_enlace_adyacente(int pos, int* bandera);
   NodoGrafo *obtener_arbol_minimo(char id_origen); //Via kurskal
-  NodoGrafo *buscar_nodo_profundidad(char id); //Obtiene un nodo atravez de la id, regresa NULL si no existe
-  NodoGrafo *buscar_nodo_ancho(char id); //Obtiene un nodo atravez de la id, regresa NULL si no existe
-  bool calcular_dijkstra(char id);
+  NodoGrafo *buscar_nodo_profundidad(char id); //Obtiene un nodo atravez de la id, por profundidad, regresa NULL si no existe
+  NodoGrafo *buscar_nodo_ancho(char id); //Obtiene un nodo atravez de la id, por ancho, regresa NULL si no existe
+  NodoGrafo *calcular_dijkstra(char id, int peso_inicial, NodoGrafo *actual, int *bandera); //Calcula un camino utilizando Dijkstra y regresa el nodo final si existe, sino regresa NULL
 
 
   bool existe_conexion(char id_origen, char id_destino);
@@ -41,6 +43,42 @@ public:
   char get_id_destino();
 };
 
+//FUNCIONES DE GRAFOS/NODOS ############################
+NodoGrafo::NodoGrafo(){
+	peso=-1;
+}
+NodoGrafo* NodoGrafo::calcular_dijkstra(char id, int peso_inicial, NodoGrafo *actual, int *bandera){
+  Enlace *temp;
+  NodoGrafo *verificador;
+  int nuevo_peso, pos = 0;
+  if(peso==-1){
+    peso = peso_inicial;
+  }
+  else{
+    if (peso>peso_inicial){
+      peso = peso_inicial;
+      anterior = actual; //Referencia de acceso rápido,
+    }
+  }
+  visitado = true;
+  if(this->id==id){
+    return this;
+  }
+  do{
+  	temp = obtener_enlace_adyacente(pos++, bandera);
+  	if (temp!=NULL){
+      nuevo_peso = peso_inicial + temp->peso;
+      if (temp->destino->visitado==false){
+      	verificador = temp->destino->calcular_dijkstra(id, nuevo_peso, this, bandera);
+      	if(verificador!=NULL){
+      		return verificador;
+		  }
+	  }
+      
+	  }
+  }while (temp!=NULL);
+  return NULL;
+}
 
 void NodoGrafo::mostrar_elementos(int* bandera){
 Nodo *temp;
@@ -53,15 +91,21 @@ do{
   }while(temp!=NULL);
 }
 
-NodoGrafo* NodoGrafo::obtener_adyacente(int pos, int* bandera){
+NodoGrafo* NodoGrafo::obtener_nodo_adyacente(int pos, int* bandera){
   return (NodoGrafo*)((Enlace*)recuperar_elemento(pos, bandera))->destino;
 }
+
+
+Enlace* NodoGrafo::obtener_enlace_adyacente(int pos, int* bandera){
+  return ((Enlace*)recuperar_elemento(pos, bandera));
+}
+
 
 void NodoGrafo::mostrar_adyacentes(int *bandera){
   NodoGrafo *temp;
   int pos = 0;
   do{
-  	temp = obtener_adyacente(pos++, bandera);
+  	temp = obtener_nodo_adyacente(pos++, bandera);
   	if (temp!=NULL){
   		printf("%c\n", temp->id);
 	  }
