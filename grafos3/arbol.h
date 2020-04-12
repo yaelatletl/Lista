@@ -1,26 +1,13 @@
-#include "derivados.h"
+#include "grafos.h"
 //alguno
 
 
-class Arbol: public Lista{
-  public:
-    char id;
-    int peso;
-    int grado;
-
-
-    int calcular_peso(){
-      return 1;
-    }
-    Arbol *obtener_hijo(int pos, int *bandera){
-      return (Arbol*)recuperar_elemento(pos, bandera);
-    }
-
-
-};
-
 class ArbolBinario: public NodoGrafo{
 public:
+  int grado;
+  Arbol *obtener_hijo(int pos, int *bandera){
+    return (Arbol*)recuperar_elemento(pos, bandera);
+  }
   bool esta_lleno();
   void posorden(Arbol nodo){
     if (nodo==NULL) return;
