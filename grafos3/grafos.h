@@ -127,7 +127,7 @@ void NodoGrafo::mostrar_adyacentes(int *bandera){
   }while(temp!=NULL);
 }
 
-void NodoGrafo::agregar_arista(char id_origen , char id_destino, int peso, bool bidireccional, int *bandera){
+void NodoGrafo::agregar_arista_final(char id_origen , char id_destino, int peso, bool bidireccional, int *bandera){
 Enlace *arista_actual;
 NodoGrafo *inicio, *final;
 
@@ -139,6 +139,21 @@ arista_actual = new Enlace(inicio, final, peso); //crear un Enlace
 
 if (bidireccional) {final->agregar_arista(id_destino, id_origen, peso, false, bandera);} //Si es bidireccional, se hace un agregar_arista(char id_destino, char id_origen, false)
 insertar_final(arista_actual, bandera); //Agregar el enlace a las adyacencias
+return;
+}
+
+void NodoGrafo::agregar_arista_inicio(char id_origen , char id_destino, int peso, bool bidireccional, int *bandera){
+Enlace *arista_actual;
+NodoGrafo *inicio, *final;
+
+inicio = obtener_nodo(id_origen);//Verificar si existe nodo con id_origen o id_destino
+final = obtener_nodo(id_destino);//Verificar si existe nodo con id_origen o id_destino
+if (inicio!=NULL)   inicio = new NodoGrafo;//Si no existe alguno, crearlo y añadirlo al enlace
+if (final!=NULL)    final = new NodoGrafo;//Si no existe alguno, crearlo y añadirlo al enlace
+arista_actual = new Enlace(inicio, final, peso); //crear un Enlace
+
+if (bidireccional) {final->agregar_arista(id_destino, id_origen, peso, false, bandera);} //Si es bidireccional, se hace un agregar_arista(char id_destino, char id_origen, false)
+insertar_inicio(arista_actual, bandera); //Agregar el enlace a las adyacencias
 return;
 }
 
